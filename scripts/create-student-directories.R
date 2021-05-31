@@ -7,6 +7,7 @@ library(dplyr)
 library(purrr)
 library(stringr)
 library(glue)
+library(blastula)
 
 
 # Authorization -----------------------------------------------------------
@@ -60,6 +61,7 @@ lapply(student_file$directory_title, create_student_drive)
 student_directory_ids <- drive_ls(path = as_id(base_dir_id))
 student_directory_ids[["drive_resource"]] <- NULL
 student_directory_ids <- student_directory_ids %>% bind_rows() %>% data.frame()
+student_directory_ids$directory_url <- glue::glue("https://drive.google.com/drive/folders/{student_directory_ids$id}")
 student_file <- left_join(student_file, student_directory_ids, by=c('directory_title'='name'))
 
 
@@ -97,3 +99,13 @@ copy_template_file <- function(directory_id){
 }
 
 lapply(X = assign_ids, copy_template_file)
+
+
+
+# Send onboarding e-mails ----------------------------------------------
+
+source("scripts/email_templates.R")
+
+student_emails <- student_file %>% filter(marticulated == 'Y') %>% pull(email)
+
+lapply(X = student_emails, FUN = send_onboarding_email)
