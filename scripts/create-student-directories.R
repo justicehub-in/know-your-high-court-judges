@@ -27,8 +27,10 @@ get_student_file <-
   )
 
 student_file <- readxl::read_xlsx(path = "data/student_applications.xlsx",sheet = "Combined Application")
+
 student_file <- student_file[, c(1:5)] %>% data.frame()
 names(student_file)[] <- c("selected","marticulated","highcourt","email","name")
+
 student_file <- student_file[student_file$selected == "Y",]
 student_file$name <- stringr::str_to_title(student_file$name)
 student_file$directory_title <- stringr::str_replace_all(
@@ -40,8 +42,6 @@ student_file$directory_title <- stringr::str_replace_all(
 student_file$directory_title <-
   glue::glue("sod_data_{student_file$directory_title}")
 
-
-
 # Create directories for all students -----------------------------------------
 
 base_dir_id <- "1FnvBBGrdBpdvhQ9q5H15c5oOhEGFLcrv"
@@ -52,16 +52,12 @@ create_student_drive <- function(folder_name){
 
 lapply(student_file$directory_title, create_student_drive)
 
-
-
-
 # Get directory Id's for all ----------------------------------------------
 
 student_directory_ids <- drive_ls(path = as_id(base_dir_id))
 student_directory_ids[["drive_resource"]] <- NULL
 student_directory_ids <- student_directory_ids %>% bind_rows() %>% data.frame()
 student_file <- left_join(student_file, student_directory_ids, by=c('directory_title'='name'))
-
 
 # Assign directories to students ------------------------------------------
 
