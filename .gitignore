@@ -38,5 +38,6 @@ vignettes/*.pdf
 # R Environment Variables
 .Renviron
 
-# Directories
-data/
+# Files
+data/student_applications.xlsx
+
