@@ -40,3 +40,4 @@ vignettes/*.pdf
 
 # Files
 data/student_applications.xlsx
+data/people_onboarded.csv
