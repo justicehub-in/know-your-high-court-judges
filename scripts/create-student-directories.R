@@ -1,14 +1,7 @@
 
 # Declare libraries -------------------------------------------------------
 
-library(googledrive)
-library(readxl)
-library(dplyr)
-library(purrr)
-library(stringr)
-library(glue)
-library(blastula)
-
+source("scripts/libraries.R")
 
 # Authorization -----------------------------------------------------------
 
@@ -29,8 +22,8 @@ get_student_file <-
 
 student_file <- readxl::read_xlsx(path = "data/student_applications.xlsx",sheet = "Combined Application")
 
-student_file <- student_file[, c(1:5)] %>% data.frame()
-names(student_file)[] <- c("selected","marticulated","highcourt","email","name")
+student_file <- student_file[, c(1:7)] %>% data.frame()
+names(student_file)[] <- c("selected","marticulated","dropped","highcourt","email","phone","name")
 
 student_file <- student_file[student_file$selected == "Y",]
 student_file$name <- stringr::str_to_title(student_file$name)
