@@ -1,0 +1,105 @@
+rules:
+- expr: Gender %in% c('Male','Female')
+  name: 'Gender'
+  label: 'valid gender'
+  description: 'check gender variable'
+- expr: Religion %in% c("Hindu", "Muslim", "Christian", "Sikh", "Buddhist", "Jain", "Zoroastrianism")
+  name: 'Religion'
+  label: 'valid religion'
+  description: 'check religion variable'
+- expr: Caste %in% c("General", "Dalit", "OBC", "ST")
+  name: 'Caste'
+  label: 'valid caste'
+  description: 'check caste variable'
+- expr: check_format(DateofBirth)
+  name: 'Date of Birth'
+  label: 'valid dob'
+  description: 'check dob'
+- expr: check_format(DateofAppointment)
+  name: 'Date of Appointment'
+  label: 'valid doa'
+  description: 'check doa'
+- expr: check_format(DateofRetirement)
+  name: 'Date of Retirement'
+  label: 'valid dor'
+  description: 'check dor'
+- expr: IfDiedinOffice %in% c('Yes','No') 
+  name: 'Died in office'
+  label: 'died-in-office'
+  description: 'check died-in-office'
+- expr: Ifresignedfromoffice %in% c('Yes','No') 
+  name: 'Resigned in office'
+  label: 'resigned-in-office'   
+- expr: IftransferredtoanyotherHighCourt %in% c('Yes','No') 
+  name: 'Transferred to any other High Court'
+  label: 'transferred-to-any-other-High-Court'   
+- expr: check_format(Dateofsuchtransfer-1)
+  name: 'Date of Transfer 1'
+  label: 'valid dot-1'
+- expr: check_format(Dateofsuchtransfer-2)
+  name: 'Date of Transfer 2'
+  label: 'valid dot-2'
+- expr: check_format(Dateofsuchtransfer-3)
+  name: 'Date of Transfer 3'
+  label: 'valid dot-3'
+- expr: IfappointedChiefJusticeinanotherHighCourt %in% c('Yes','No') 
+  name: 'If appointed Chief Justice in another High Court'
+  label: 'appointed-Chief-Justice-in-another-High-Court'   
+- expr: IfappointedtotheSupremeCourt %in% c('Yes','No') 
+  name: 'If appointed to the Supreme Court'
+  label: 'appointed-to-the-Supreme-Court'   
+- expr: check_format(DateofappointmenttotheSupremeCourt)
+  name: 'Date of appointment to the Supreme Court'
+  label: 'valid doa-sc'
+- expr: Cadre %in% c('Service','Bar') 
+  name: 'Cadre'
+  label: 'valid cadre'
+- expr: ExperienceinSubordinateJudiciary %in% c('Yes','No') 
+  name: 'Experience in Subordinate Judiciary'
+  label: 'experience-in-Subordinate-Judiciary'
+- expr: LitigationExperience %in% c('Yes','No') 
+  name: 'Litigation Experience'
+  label: 'litigation-experience'
+- expr: IfaSeniorAdvocate %in% c('Yes','No','NA') 
+  name: 'If a Senior Advocate'
+  label: 'senior-advocate'
+- expr: ExperienceinHighCourtAdministrativePost %in% c('Yes','No','NA') 
+  name: 'If a Experience in High Court Administrative Post'
+  label: 'high-court-administrative-post'
+- expr: IfservedasGovernmentCounsel %in% c('Yes','No','NA') 
+  name: 'If served as Government Counsel'
+  label: 'government-counsel'
+- expr: IfservedasAdvocateGeneral %in% c('Yes','No','NA') 
+  name: 'If served as Advocate General'
+  label: 'advocate-general'
+- expr: IfempanelledbyPSUs %in% c('Yes','No','NA') 
+  name: 'If empanelled by PSUs'
+  label: 'empanelled-by-PSUs'
+- expr: IfempanelledbyBanks %in% c('Yes','No','NA') 
+  name: 'If empanelled by Banks'
+  label: 'empanelled-by-banks'
+- expr: IfempanelledbyStatutoryBody %in% c('Yes','No','NA') 
+  name: 'If empanelled by Statutory Body'
+  label: 'empanelled-by-statutory-body'
+- expr: IfempanelledbyPrivateCompanies %in% c('Yes','No','NA') 
+  name: 'If empanelled by Private Companies'
+  label: 'empanelled-by-private-companies'
+- expr: ChamberDetails %in% c('Yes','No','NA') 
+  name: 'Chamber Details'
+  label: 'chamber-details'
+- expr: ForeignDegreeinLaw %in% c('Yes','No') 
+  name: 'Foreign Degree in Law'
+  label: 'foreign-degree-in-law'
+- expr: Post-Graduateinanothersubject %in% c('Yes','No') 
+  name: 'Post-Graduate in another subject'
+  label: 'post-graduate-in-another-subject'
+- expr: Post-Graduateinlaw %in% c('Yes','No') 
+  name: 'Post-Graduate in law'
+  label: 'post-graduate-in-law'
+  
+
+
+
+
+
+
