@@ -10,6 +10,11 @@ Summer of Data is a national 5-week program focused on bringing more law student
 
 Data (or the lack thereof) on judges, their backgrounds, tenure and professional trajectory can tell us a lot about the judicial system. It can reveal the diversity and transparency of the institution on a range of parameters. Equally it can unravel systemic factors that affect the composition and impact of the institution. 
 
+
+## Links
+
+- [Cross checking data within courts - Sample](scripts/cross-check-entries.html)
+
 ## License
 
 This material is licensed under a Creative Commons Attribution 4.0 International license.
