@@ -13,7 +13,7 @@ Data (or the lack thereof) on judges, their backgrounds, tenure and professional
 
 ## Links
 
-- [Cross checking data within courts - Sample](scripts/cross-check-entries.html)
+- Cross checking data within courts - [Sample Web View](https://justicehub-in.github.io/summer-of-data-chapter-1/scripts/cross-check-entries.html)
 
 ## License
 
