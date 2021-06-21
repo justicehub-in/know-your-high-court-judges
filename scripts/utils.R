@@ -36,9 +36,10 @@ variables_to_check <-
     "PostGraduateinanothersubject",
     "PostGraduateinLaw"
   )
-colour_match <- "#8BB174"
-colour_nomatch <- "#DE6C83"
-colour_NA <- "#ffffff"
+colour_match <- "#08415C"
+colour_nomatch <- "#7B0D1E"
+colour_blank <- "#ffffff"
+colour_NA_value <- "#E09F3E"
 
 # Gmail Auth --------------------------------------------------------------
 
