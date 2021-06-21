@@ -45,9 +45,12 @@ Accountability Partners -
 
 ## Results
 
-```{r read-judges-matrix}
+```{r read-files}
 judges_matrix <- readr::read_csv("../data/student_files/judges_matrix.csv")
+list_of_judges <- readr::read_csv("../data/student_files/list_of_judges_mp.csv")
+
 ```
+
 ```{r data-long-to-wide}
 judges_matrix_wide <- judges_matrix %>% pivot_wider(names_from = var_title, values_from = var_flag)
 judges_matrix_wide$judge_name <- str_to_title(judges_matrix_wide$judge_name)
@@ -94,8 +97,8 @@ PostGraduateinLaw  =  '30'
   ) %>% data_color(
     columns = all_of(var_cols),
     colors = scales::col_numeric(
-      palette = c(colour_nomatch, colour_match , colour_NA),
-      domain = c(0, 1, 2)
+      palette = c(colour_nomatch, colour_match , colour_NA_value, colour_blank),
+      domain = c(0, 1, 2, 3)
     )
   ) %>%   text_transform(locations = cells_body(all_of(var_cols)), fn = function(x){
     ""
