@@ -95,7 +95,7 @@ for(i in 1:nrow(mp_court_files)){
 }
 
 list_of_judges <- judge_datasets[,c('NameoftheJudge','DateofBirth','file_title')]
-
+readr::write_csv(list_of_judges, "data/student_files/list_of_judges_mp.csv")
 
 # Finding common judges using DoB
 common_dob <- list_of_judges %>% group_by(DateofBirth) %>% summarise(total=n()) %>% filter(total>1) %>% pull(DateofBirth)
@@ -125,19 +125,20 @@ verify_judge_details <- function(jid){
 judge_details <- judge_id_datasets %>% filter(judge_id==jid)  
 judge_matrix <- c()
 for (i in 1:length(variables_to_check)){
+  # print(i)
   var_title <- variables_to_check[i]
-  var_flag <- '1'
   var_unique_values <- unique(judge_details[,var_title]) %>% pull
-  if(length(var_unique_values) == 1 && is.na(var_unique_values)){
+  var_unique_values <- as.character(var_unique_values)
+  var_unique_values[var_unique_values == "NA"] <- NA_character_
+  if(length(var_unique_values) == 1 && !is.na(var_unique_values)){
+    var_flag <- "1"
+  } else if(length(var_unique_values) > 1 && (NA_character_ %in% var_unique_values)){
     var_flag <- "2"
+  } else if(length(var_unique_values) == 1 && is.na(var_unique_values)){
+    var_flag <- "3"
   } else {
-    var_flag <-
-      ifelse(length(var_unique_values) > 1,
-               '0',
-               '1'
-             )  
+    var_flag <- "0"
   }
-  
   
   var_matrix <- data.frame("var_title"=var_title, "var_flag"=var_flag)
   judge_matrix <- bind_rows(judge_matrix, var_matrix)
