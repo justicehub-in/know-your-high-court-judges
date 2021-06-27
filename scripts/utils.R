@@ -141,7 +141,7 @@ verify_judge_details <- function(judge_datasets, judge_name,judge_dob){
   return(judge_matrix)
 }
 
-# court_name <- "Andhra Pradesh"
+# court_name <- "Allahbad"
 generate_court_report <- function(court_name){
   print(glue("{court_name \n}"))
   court_details <- list()
@@ -155,6 +155,7 @@ generate_court_report <- function(court_name){
     student_file <- drive_download(file = as_id(court_files$SheetLink[[i]]), path = file_path ,overwrite = TRUE)
     student_file <- readxl::read_xlsx(path = file_path,sheet = "Datasheet",.name_repair = col_name_repair_function)
     student_file$file_title <- file_title
+    # print(str(student_file))
     student_file$NameoftheJudge <- student_file$NameoftheJudge %>% str_to_lower() %>% str_squish()
     student_file$StudentName <- studentName
     judge_datasets_i <- bind_rows(judge_datasets_i, student_file)  
@@ -164,6 +165,8 @@ generate_court_report <- function(court_name){
   names(totalJudgesbyFiles)[] <- c("StudentName","TotalJudges")
   
   commonJudges <- judge_datasets_i %>% group_by(NameoftheJudge, DateofBirth) %>% summarise(totalEntries = length(unique(file_title))) %>% filter(totalEntries>1)
+  commonJudges <- commonJudges[!is.na(commonJudges$NameoftheJudge),]
+  
   
   if(nrow(commonJudges)>0){
     
@@ -175,15 +178,17 @@ generate_court_report <- function(court_name){
     judge_i_matrix <- verify_judge_details(judge_datasets_i, judge_name_i, judge_dob_i)
     common_judge_matrix <- bind_rows(common_judge_matrix, judge_i_matrix)
   }
-  } else {
-    commonJudges <- c()
-    common_judge_matrix <- c()
-  }
   
   common_judge_matrix <- common_judge_matrix %>% pivot_wider(names_from = var_title, values_from = var_flag)
   common_judge_matrix$judge_name <- str_to_title(common_judge_matrix$judge_name)
+  nrow_commonJudges <- nrow(commonJudges)
+  } else {
+    commonJudges <- c()
+    nrow_commonJudges <- 0
+    common_judge_matrix <- c()
+  }
   
-  totalJudgesbyFiles <- bind_rows(totalJudgesbyFiles, data.frame('StudentName'='Judges in common','TotalJudges'=nrow(commonJudges)))
+  totalJudgesbyFiles <- bind_rows(totalJudgesbyFiles, data.frame('StudentName'='Judges in common','TotalJudges'=nrow_commonJudges))
   
   court_details$court_name <- court_name
   court_details$total_judes <- totalJudgesbyFiles
@@ -197,6 +202,7 @@ render_court_report <- function(judges_matrix_wide){
   # var_cols <- names(judges_matrix_wide)
   # var_cols <- var_cols[!var_cols %in% c("judge_name","judge_dob")]
   # var_cols <- variables_to_check
+  if(nrow(judges_matrix_wide)>0){
   judges_matrix_wide_t <-
     judges_matrix_wide %>% gt(rowname_col =  c("judge_name")) %>% tab_header(title = md("**Cross checking data for Judges**")) %>% tab_stubhead(label = "Judge Details") %>%  cols_label(judge_dob = 'DateofBirth' ,Gender  =  '1',
                                                                                                                                                                                                                              Religion  =  '2',
@@ -258,11 +264,27 @@ render_court_report <- function(judges_matrix_wide){
       ),
       locations = cells_stub()
     )
-  
+  } else {
+    judges_matrix_wide_t <- "No common judges found across files"
+  }
   return(judges_matrix_wide_t)
   
 }
 
+generate_total_judges_table <- function(total_judges_df){
+  render_total_judges_table <- total_judges_df %>% kbl() %>% kable_material(lightable_options = "striped") %>% row_spec(row = nrow(total_judges), background = "#CEE397",bold = T)
+  return(render_total_judges_table)
+}
+
+generate_common_judges_table <- function(common_judges_df){
+  if(nrow(common_judges_df)>0){
+    common_judges_df$NameoftheJudge <- str_to_title(common_judges_df$NameoftheJudge)
+    render_common_judges_table <- common_judges_df %>% select(!totalEntries) %>% kbl() %>% kable_styling(fixed_thead = TRUE) %>% kable_material(lightable_options = "striped")  
+  } else {
+    render_common_judges_table <- ""
+  }
+  return(render_common_judges_table)
+}
 
 generate_cc_table <- function(){
   cc_table <- data.frame(matrix(nrow = 4,ncol = 2, data = ""))
