@@ -183,6 +183,8 @@ generate_court_report <- function(court_name){
   common_judge_matrix <- common_judge_matrix %>% pivot_wider(names_from = var_title, values_from = var_flag)
   common_judge_matrix$judge_name <- str_to_title(common_judge_matrix$judge_name)
   
+  totalJudgesbyFiles <- bind_rows(totalJudgesbyFiles, data.frame('StudentName'='Judges in common','TotalJudges'=nrow(commonJudges)))
+  
   court_details$court_name <- court_name
   court_details$total_judes <- totalJudgesbyFiles
   court_details$common_judges <- commonJudges
