@@ -1,5 +1,6 @@
 ---
-title: "Justice Hub - Summer of Data"
+title: "Data verificaiton report for Andhra Pradesh High Court"
+subtitle: 
 output: 
   html_document:
     df_print: default
@@ -29,137 +30,62 @@ source("libraries.R")
 source("utils.R")
 ```
 
-
-## Court Details
-
-Court - **High Court of Madhya Pradesh**
-
-Total Judges - 18
-
-Accountability Partners - 
-
-1. Sneha Rath - [Link](https://docs.google.com/spreadsheets/d/1g6zdfGi_Yo68NNRlUZO4rBfSImC8oORFuZHHq9uTeEY/edit?usp=drivesdk)
-2. Biswajeet Mishra - [Link](https://docs.google.com/spreadsheets/d/1XpiynXx_RxRUz5x00qjYE603rM-vGnwk3Gw4NAJUTXM/edit?usp=drivesdk)
-
---- 
-
-## Results
-
 ```{r read-files}
-judges_matrix <- readr::read_csv("../data/student_files/judges_matrix.csv")
-list_of_judges <- readr::read_csv("../data/student_files/list_of_judges_mp.csv")
-
+courts_data_verification_summary <-
+  jsonlite::read_json("../data/student_files/courts_data_verification_summary.json")
+court_name_index <- purrr::map(courts_data_verification_summary, "court_name") %>% unlist()
+court_name_index <- which(court_name_index == "Andhra Pradesh")
 ```
 
-```{r data-long-to-wide}
-judges_matrix_wide <- judges_matrix %>% pivot_wider(names_from = var_title, values_from = var_flag)
-judges_matrix_wide$judge_name <- str_to_title(judges_matrix_wide$judge_name)
+
+## Verification Report
+
+```{r verification_data}
+judges_matrix <- courts_data_verification_summary[[court_name_index]]$judges_matrix %>% bind_rows() %>% data.frame(check.names = FALSE)
 ```
+
 
 ```{r table-to-display}
-var_cols <- unique(judges_matrix$var_title)
-judges_matrix_wide_t <-
-  judges_matrix_wide %>% select(!judge_id) %>% gt(rowname_col =  "judge_name") %>% tab_header(title = md("**Cross checking data for Judges**"), subtitle = "State: Madhya Pradesh") %>% tab_stubhead(label = "Judge Name") %>%  cols_label(Gender  =  '1',
-Religion  =  '2',
-Caste =  '3',
-DateofBirth  =  '4',
-DateofAppointment  =  '5',
-DateofRetirement  =  '6',
-IfDiedinOffice  =  '7',
-Ifresignedfromoffice  =  '8',
-IftransferredtoanyotherHighCourt  =  '9',
-Dateofsuchtransfer1  =  '10',
-Dateofsuchtransfer2  =  '11',
-Dateofsuchtransfer3  =  '12',
-IfappointedChiefJusticeinanotherHighCourt  =  '13',
-IfappointedtotheSupremeCourt  =  '14',
-DateofappointmenttotheSupremeCourt  =  '15',
-Cadre  =  '16',
-ExperienceinSubordinateJudiciary  =  '17',
-LitigationExperience  =  '18',
-IfaSeniorAdvocate  =  '19',
-ExperienceinHighCourtAdministrativePost  =  '20',
-IfservedasGovernmentCounsel  =  '21',
-IfservedasAdvocateGeneral  =  '22',
-IfempanelledbyPSUs  =  '23',
-IfempanelledbyBanks  =  '24',
-IfempanelledbyanyStatutoryBody  =  '25',
-IfempanelledbyPrivateCompanies  =  '26',
-ChamberDetails  =  '27',
-ForeignDegreeinLaw  =  '28',
-PostGraduateinanothersubject  =  '29',
-PostGraduateinLaw  =  '30'
-)%>% cols_width(all_of(var_cols)~px(25)) %>% tab_options(
-    heading.background.color = "#F7EFB2",
-    column_labels.font.size = "x-small",
-    stub.font.weight = "bold",
-    table.font.size = "x-small"
-  ) %>% data_color(
-    columns = all_of(var_cols),
-    colors = scales::col_numeric(
-      palette = c(colour_nomatch, colour_match , colour_NA_value, colour_blank),
-      domain = c(0, 1, 2, 3)
-    )
-  ) %>%   text_transform(locations = cells_body(all_of(var_cols)), fn = function(x){
-    ""
-  })%>% tab_style(style = list(cell_borders(
-    sides = "all",
-    color = "black",
-    style = "dashed"
-  )),
-  locations = list(cells_body(columns = all_of(var_cols)))) %>% tab_style(style = list(cell_borders(
-    sides = "bottom",
-    color = "black",
-    weight = px(3)
-  )),
-  locations = list(cells_column_labels(columns = gt::everything()))) %>%   tab_style(
-   style = list(
-      cell_fill(color = "darkblue"),
-      cell_text(color = "white",align = "left")
-      ),
-    locations = cells_stub()
-  )
 
-judges_matrix_wide_t
-
-
+render_court_report(judges_matrix_wide = judges_matrix)
 
 ```
 
 ---
 
+## Judge Details {.tabset}
+
+### Total Judges
+```{r total-judges}
+total_judges <- courts_data_verification_summary[[court_name_index]]$total_judes %>% bind_rows() %>% data.frame(check.names = FALSE)
+total_judges %>% kbl() %>% kable_material(lightable_options = "striped")
+```
+
+
+
+### Common Judges
+```{r common-judges}
+common_judges <- courts_data_verification_summary[[court_name_index]]$common_judges %>% bind_rows() %>% data.frame(check.names = FALSE)
+common_judges$NameoftheJudge <- str_to_title(common_judges$NameoftheJudge)
+common_judges %>% select(!totalEntries) %>% kbl() %>% kable_styling(fixed_thead = TRUE) %>% kable_material(lightable_options = "striped")
+```
+
+## Notes {.tabset}
+
+### Colour Codes
+
+```{r colorr-code-table}
+generate_cc_table()
+
+```
+
+
 ### Variable List
 
-1. Gender 
-2. Religion
-3. Caste 
-4. Date of Birth 
-5. Date of Appointment 
-6. Date of Retirement 
-7. If Died in Office 
-8. If resigned from office 
-9. If transferred to any other High Court 
-10. Date of such transfer-1 
-11. Date of such transfer-2 
-12. Date of such transfer-3 
-13. If appointed Chief Justice in another High Court 
-14. If appointed to the Supreme Court 
-15. Date of appointment to the Supreme Court 
-16. Cadre 
-17. Experience in Subordinate Judiciary 
-18. Litigation Experience 
-19. If a Senior Advocate 
-20. Experience in High Court Administrative Post 
-21. If served as Government Counsel 
-22. If served as Advocate General 
-23. If empanelled by PSUs 
-24. If empanelled by Banks 
-25. If empanelled by any StatutoryBody 
-26. If empanelled by Private Companies 
-27. Chamber Details 
-28. Foreign Degree in Law 
-29. Post Graduate in another subject 
-30. Post Graduate in Law 
+```{r variable-list}
+generate_variable_list()
+
+```
 
 ----
 
