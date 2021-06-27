@@ -55,10 +55,12 @@ render_court_report(judges_matrix_wide = judges_matrix)
 
 ## Judge Details {.tabset}
 
+
 ### Total Judges
 ```{r total-judges}
 total_judges <- courts_data_verification_summary[[court_name_index]]$total_judes %>% bind_rows() %>% data.frame(check.names = FALSE)
-total_judges %>% kbl() %>% kable_material(lightable_options = "striped") %>% row_spec(row = nrow(total_judges), background = "#CEE397",bold = T)
+
+generate_total_judges_table(total_judges)
 ```
 
 
@@ -66,8 +68,9 @@ total_judges %>% kbl() %>% kable_material(lightable_options = "striped") %>% row
 ### Common Judges
 ```{r common-judges}
 common_judges <- courts_data_verification_summary[[court_name_index]]$common_judges %>% bind_rows() %>% data.frame(check.names = FALSE)
-common_judges$NameoftheJudge <- str_to_title(common_judges$NameoftheJudge)
-common_judges %>% select(!totalEntries) %>% kbl() %>% kable_styling(fixed_thead = TRUE) %>% kable_material(lightable_options = "striped")
+
+generate_common_judges_table(common_judges)
+
 ```
 
 ## Notes {.tabset}
