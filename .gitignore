@@ -42,4 +42,5 @@ vignettes/*.pdf
 data/student_applications.xlsx
 data/people_onboarded.csv
 data/track_comments.xlsx
+data/student_work_status.xlsx
 data/student_files/*
