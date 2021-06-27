@@ -1,0 +1,97 @@
+---
+title: "Data verificaiton report for Madras High Court"
+subtitle: 
+output: 
+  html_document:
+    df_print: default
+    number_sections: no
+    self_contained: no
+    toc: no
+    toc_float:
+      collapsed: no
+---
+
+<br /> Last updated: `r format(Sys.time(), '%d %B, %Y')`
+
+```{r chunk-options, include=FALSE}
+# Options for building this document
+knitr::opts_chunk$set(
+  fig.height=5, 
+  fig.width=10, 
+  fig.align='center',
+  echo=FALSE,
+  message=FALSE,
+  warning=FALSE
+)
+```
+
+```{r declare-libraries}
+source("libraries.R")
+source("utils.R")
+```
+
+```{r read-files}
+courts_data_verification_summary <-
+  jsonlite::read_json("../data/student_files/courts_data_verification_summary.json")
+court_name_index <- purrr::map(courts_data_verification_summary, "court_name") %>% unlist()
+court_name_index <- which(court_name_index == "Madras")
+```
+
+
+## Verification Report
+
+```{r verification_data}
+judges_matrix <- courts_data_verification_summary[[court_name_index]]$judges_matrix %>% bind_rows() %>% data.frame(check.names = FALSE)
+```
+
+
+```{r table-to-display}
+
+render_court_report(judges_matrix_wide = judges_matrix)
+
+```
+
+---
+
+## Judge Details {.tabset}
+
+### Total Judges
+```{r total-judges}
+total_judges <- courts_data_verification_summary[[court_name_index]]$total_judes %>% bind_rows() %>% data.frame(check.names = FALSE)
+total_judges %>% kbl() %>% kable_material(lightable_options = "striped")
+```
+
+
+
+### Common Judges
+```{r common-judges}
+common_judges <- courts_data_verification_summary[[court_name_index]]$common_judges %>% bind_rows() %>% data.frame(check.names = FALSE)
+common_judges$NameoftheJudge <- str_to_title(common_judges$NameoftheJudge)
+common_judges %>% select(!totalEntries) %>% kbl() %>% kable_styling(fixed_thead = TRUE) %>% kable_material(lightable_options = "striped")
+```
+
+## Notes {.tabset}
+
+### Colour Codes
+
+```{r colorr-code-table}
+generate_cc_table()
+
+```
+
+
+### Variable List
+
+```{r variable-list}
+generate_variable_list()
+
+```
+
+----
+
+
+
+
+
+
+
