@@ -17,7 +17,7 @@ generate_report_courts <- student_work_status %>% filter(Status=="Completed" & C
 
 courts_to_generate_report <- generate_report_courts$Court %>% unique()
 
-court_reports_df <- purrr::map(courts_to_generate_report[1:2], generate_court_report)
+court_reports_df <- purrr::map(courts_to_generate_report, generate_court_report)
 
 jsonlite::write_json(court_reports_df, "data/student_files/courts_data_verification_summary.json")
 
