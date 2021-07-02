@@ -122,3 +122,9 @@ jsonlite::write_json(court_reports_df, "data/student_files/courts_data_verificat
 
 # judges_matrix <- judge_id_datasets$judge_id %>% unique() %>% map(verify_judge_details) %>% bind_rows()
 # readr::write_csv(judges_matrix,"data/student_files/judges_matrix.csv")
+
+
+# Render Files
+
+files <- list.files(path = "scripts/", pattern = "[.]Rmd$", full.names = TRUE)
+for (f in files) rmarkdown::render(f)
