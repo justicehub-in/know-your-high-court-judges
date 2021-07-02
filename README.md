@@ -15,11 +15,10 @@ The verification reports for selected HC's can be accessed on these links:
 2. [Andhra Pradesh](https://justicehub-in.github.io/summer-of-data-chapter-1/scripts/cross-check-entries-andhra-pradesh.html)
 3. [Bombay](https://justicehub-in.github.io/summer-of-data-chapter-1/scripts/cross-check-entries-bombay.html)
 4. [Calcutta](https://justicehub-in.github.io/summer-of-data-chapter-1/scripts/cross-check-entries-calcutta.html)
-5. [Chief Justices](https://justicehub-in.github.io/summer-of-data-chapter-1/scripts/cross-check-entries-chief-justices.html)
-6. [Kerala](https://justicehub-in.github.io/summer-of-data-chapter-1/scripts/cross-check-entries-kerala.html)
-7. [Madhya Pradesh](https://justicehub-in.github.io/summer-of-data-chapter-1/scripts/cross-check-entries-madhya-pradesh.html)
-8. [Madras](https://justicehub-in.github.io/summer-of-data-chapter-1/scripts/cross-check-entries-madras.html)
-9. [Patna](https://justicehub-in.github.io/summer-of-data-chapter-1/scripts/cross-check-entries-patna.html)
+5. [Kerala](https://justicehub-in.github.io/summer-of-data-chapter-1/scripts/cross-check-entries-kerala.html)
+6. [Madhya Pradesh](https://justicehub-in.github.io/summer-of-data-chapter-1/scripts/cross-check-entries-madhya-pradesh.html)
+7. [Madras](https://justicehub-in.github.io/summer-of-data-chapter-1/scripts/cross-check-entries-madras.html)
+8. [Patna](https://justicehub-in.github.io/summer-of-data-chapter-1/scripts/cross-check-entries-patna.html)
 
 ## License
 
