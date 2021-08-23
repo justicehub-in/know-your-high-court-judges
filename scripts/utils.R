@@ -45,7 +45,6 @@ colour_blank <- "#E0E2DB"
 
 # create_smtp_creds_key(id = "gmail_creds", user = "apoorv@civicdatalab.in",provider = "gmail", overwrite = TRUE)
 
-
 # Create base student file ------------------------------------------------
 
 create_student_file <- function(){
@@ -96,7 +95,6 @@ get_work_status <- function(){
   return(student_work_status)
 }
 
-
 col_name_repair_function <-
   function(nms) {
     str_replace_all(nms, pattern = " ", replacement = "") %>%
@@ -104,7 +102,6 @@ col_name_repair_function <-
       str_replace_all(pattern = "-", replacement = "") %>%
       str_replace_all(pattern = ",", replacement = "")
   }
-
 
 # judge_name <- "anand pathak" 
 # judge_dob <-  "1968-07-18"
@@ -295,7 +292,6 @@ generate_cc_table <- function(){
   render_cc_table <- cc_table %>% kbl(escape = F) %>% kable_material(lightable_options = "striped", full_width=F) 
   return(render_cc_table)
 }
-
 
 generate_variable_list <- function(){
   
