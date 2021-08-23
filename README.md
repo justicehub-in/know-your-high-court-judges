@@ -20,6 +20,10 @@ The verification reports for selected HC's can be accessed on these links:
 7. [Madras](https://justicehub-in.github.io/summer-of-data-chapter-1/scripts/cross-check-entries-madras.html)
 8. [Patna](https://justicehub-in.github.io/summer-of-data-chapter-1/scripts/cross-check-entries-patna.html)
 
+Single data entry courts:
+
+1. [Chhattisgarh](https://justicehub-in.github.io/summer-of-data-chapter-1/scripts/single-entry/verify_chattisgarh_hc.html)
+
 ## License
 
 This material is licensed under a Creative Commons Attribution 4.0 International license.
