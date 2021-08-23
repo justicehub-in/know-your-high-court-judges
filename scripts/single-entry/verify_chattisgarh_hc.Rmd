@@ -75,7 +75,7 @@ highcourt_details <- data.frame("Details"=c("High Court","Student","Total Judges
 
 highcourt_details %>% gt(rowname_col =  c("Details"))%>%  tab_header(title = md("**Dataset Details**")) %>% tab_options(
       heading.background.color = "#F7EFB2",
-      stub.font.weight = "bold",column_labels.hidden = TRUE,table.font.size = "small")
+      stub.font.weight = "bold",column_labels.hidden = TRUE,table.font.size = "x-small")
 
 ```
 
