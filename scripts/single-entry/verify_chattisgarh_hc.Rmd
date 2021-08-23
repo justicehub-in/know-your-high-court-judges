@@ -1,0 +1,138 @@
+---
+title: "Data verification report for Chattisgarh High Court"
+subtitle: 
+output: 
+  html_document:
+    df_print: default
+    number_sections: no
+    self_contained: no
+    toc: no
+    toc_float:
+      collapsed: no
+---
+
+<br /> Last updated: `r format(Sys.time(), '%d %B, %Y')`
+
+```{r chunk-options, include=FALSE}
+# Options for building this document
+knitr::opts_chunk$set(
+  fig.height=5, 
+  fig.width=10, 
+  fig.align='center',
+  echo=FALSE,
+  message=FALSE,
+  warning=FALSE
+)
+```
+
+```{r declare-libraries}
+source("../libraries.R")
+source("../utils.R")
+```
+
+
+
+```{r read-files}
+court_name <- "Chhattisgarh"
+
+
+final_submission_file_id <- "1O7Q24pK4I4vcARppm7tk5q009NVwEDd-XYgIPRAeRlc"
+
+final_submission_file_download <-
+  drive_download(
+    file = as_id(final_submission_file_id),
+    path = "../../data/final_submission_feedback.xlsx",
+    overwrite = TRUE
+  )
+
+final_submission_file <- readxl::read_xlsx("../../data/final_submission_feedback.xlsx", sheet = "Final submission feedback")
+final_submission_file <- final_submission_file[,c("ApplicantName","Court","SheetLink")]
+
+
+file_path <- glue("../../data/student_files/{court_name}.xlsx")
+file_link <-
+final_submission_file$SheetLink[final_submission_file$Court == court_name]
+court_file_download <-
+  drive_download(file = file_link,
+                 path = file_path,
+                 overwrite = TRUE)
+court_file <- readxl::read_xlsx(path = file_path, sheet = "Datasheet",col_types = "text")
+court_file[is.na(court_file)] <- ""
+
+```
+
+:::: {style="display: flex;"}
+
+::: {}
+
+
+```{r highcourt-details}
+
+total_judges <- nrow(court_file)
+student_name <- final_submission_file$ApplicantName[final_submission_file$Court == court_name]
+highcourt_details <- data.frame("Details"=c("High Court","Student","Total Judges"),
+"Value" = c(court_name, student_name, total_judges),check.names = FALSE)
+
+highcourt_details %>% gt(rowname_col =  c("Details"))%>%  tab_header(title = md("**Dataset Details**")) %>% tab_options(
+      heading.background.color = "#F7EFB2",
+      stub.font.weight = "bold",column_labels.hidden = TRUE,table.font.size = "small")
+
+```
+
+:::
+
+::: {.column width="4%"}
+
+:::
+
+::: {}
+
+
+
+```{r generate-verification-report, echo=FALSE}
+variable_summary <- c()
+for(i in 2:ncol(court_file)){
+  variable_name <- names(court_file)[i]
+  variable_reach <- total_judges - nrow(court_file[court_file[,i]=="",i]) 
+  variable_summary <-
+    bind_rows(variable_summary,
+              data.frame("variable" = variable_name, "reach" = variable_reach))
+}
+
+variable_summary$percent_reach <- round(variable_summary$reach/total_judges*100)
+
+variable_summary %>% gt(rowname_col =  c("variable")) %>% tab_header(title = md("**Data verification report**")) %>%  cols_label(variable = 'Variable' ,reach  =  'Total Judges',percent_reach = 'Data completion percent') %>% tab_options(
+      heading.background.color = "#F7EFB2",
+      column_labels.font.size = "x-small",
+      stub.font.weight = "bold",
+      table.font.size = "x-small"
+    ) %>% tab_style(
+    style = cell_fill(color = "#BD4F6C"),
+    locations = cells_body(
+      columns = percent_reach,
+      rows = percent_reach < 50)
+  ) %>% tab_style(
+    style = cell_fill(color = "#F0CF65"),
+    locations = cells_body(
+      columns = percent_reach,
+      rows = percent_reach >= 50)
+  ) %>% tab_style(
+    style = cell_fill(color = "#89BD9E"),
+    locations = cells_body(
+      columns = percent_reach,
+      rows = percent_reach >= 80)
+  )
+
+```
+
+
+
+:::   
+
+
+
+::::
+
+
+
+
