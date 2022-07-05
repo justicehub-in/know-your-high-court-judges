@@ -28,29 +28,23 @@ for(i in 1:length(all_datasets_info_list)){
 }
 
 
-# Collect dataset IDs for csv files ---------------------------------------
+# Collect dataset URLs for csv files ---------------------------------------
 
-all_csv_ids <- c()
+all_csv_links <- c()
 for(i in 1:length(sod_datasets_id)){
   package_details <- ckanr::package_show(id = sod_datasets_id[[i]])
   resource_list <-
-    purrr::map_df(package_details$resources, `[`, c('format', 'id'))
-  csv_id <- resource_list$id[resource_list$format=='CSV']
-  all_csv_ids <- c(all_csv_ids, csv_id)
+    purrr::map_df(package_details$resources, `[`, c('format', 'url'))
+  csv_link <- resource_list$url[resource_list$format=='CSV']
+  all_csv_links <- c(all_csv_links, csv_link)
 }
 
 # Read csv files ----------------------------------------------------------
-fid <- '6dba3a17-384a-49c4-8ed6-bdfea9ea47e3'
-csv_data <- dplyr::tbl(src = con$con, from = fid) %>% as_tibble(.)
-
-# Reading from local files ------------------------------------------------
-all_files <- dir("data/court-datasets/")
-all_files <- all_files[grepl(all_files,pattern = "csv")]
 
 all_judge_names <- c()
-for(i in 1:length(all_files)){
+for(i in 1:length(all_csv_links)){
   court_file <-
-    readr::read_csv(glue::glue("data/court-datasets/{all_files[[i]]}"), col_types = cols(.default='c'))
+    readr::read_csv(all_csv_links[[i]], col_types = cols(.default='c'))
   name_col <- names(court_file)[grepl(names(court_file), pattern = "name", ignore.case = TRUE)]
   gender_col <- names(court_file)[grepl(names(court_file), pattern = "gender", ignore.case = TRUE)]
   print(glue::glue("{all_files[[i]]} -- {name_col}"))
@@ -68,9 +62,8 @@ all_judge_names$id <- 1:nrow(all_judge_names)
 
 # POST request to DDL - Gender Classifier ----------------
 
-## converting to the required file structure
+## Converting to the required file structure
 judge_names_file <- data.frame("name"=all_judge_names[,"judge_name"], "id"=all_judge_names[,"id"])
-# judge_names_file <- data.frame("name"=all_judge_names[,"judge_name"])
 tmp_file <- tempfile(pattern = "judge-name",fileext = ".csv")
 readr::write_csv(judge_names_file,tmp_file)
 
@@ -99,7 +92,6 @@ res <-
   )
 
 ddl_gender_file <- content(res,as = "parsed")
-
 
 # Combine with the main file ----------------------------------------------
 
