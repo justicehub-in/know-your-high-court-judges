@@ -54,7 +54,7 @@ for(i in 1:length(all_csv_links)){
   judge_gender <- court_file[,gender_col] %>% unlist(use.names = FALSE)
   court_name <- all_files[[i]]
   name_df <-
-    data.frame('judge_name' = judge_names, judge_gender = judge_gender, 'court_name' = court_name)
+    data.frame('judge_name' = judge_names, judge_gender = judge_gender, 'file_name' = court_name)
   all_judge_names <- dplyr::bind_rows(all_judge_names, name_df)
 }
 
@@ -101,3 +101,11 @@ judge_details_master <-
             by = "id",
             keep = FALSE)
 
+# Checks for accuracy -----------------------------------------------------
+
+judge_details_master$ddl_gender <- 'Male'
+judge_details_master$ddl_gender[judge_details_master$female>0.5] <- 'Female' 
+
+table(judge_details_master$judge_gender, judge_details_master$ddl_gender)
+
+# The visualisation was created using data wrapper, which can be checked at https://www.datawrapper.de/_/GfXxD/
