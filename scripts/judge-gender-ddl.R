@@ -12,6 +12,8 @@ con <- ckanr::src_ckan(url = org_url)
 
 # Find all datasets under group "summer-of-data" --------------------------
 
+all_datasets_id <- ckanr::package_list(limit = 1000) %>% unlist()
+
 all_datasets_info_json <-
   pblapply(all_datasets_id, ckanr::package_show, as = "json")
 all_datasets_info_list <- pblapply(all_datasets_info_json, jsonlite::fromJSON) %>% 
@@ -47,12 +49,12 @@ for(i in 1:length(all_csv_links)){
     readr::read_csv(all_csv_links[[i]], col_types = cols(.default='c'))
   name_col <- names(court_file)[grepl(names(court_file), pattern = "name", ignore.case = TRUE)]
   gender_col <- names(court_file)[grepl(names(court_file), pattern = "gender", ignore.case = TRUE)]
-  print(glue::glue("{all_files[[i]]} -- {name_col}"))
+  print(glue::glue("{all_csv_links[[i]]} -- {name_col}"))
   judge_names <- court_file[,name_col] %>% unlist(use.names = FALSE)
   judge_names <- stringr::str_replace_all(judge_names,pattern = "\\.|\\'|-|​",replacement = "")
   judge_names <- stringr::str_squish(judge_names)
   judge_gender <- court_file[,gender_col] %>% unlist(use.names = FALSE)
-  court_name <- all_files[[i]]
+  court_name <- all_csv_links[[i]]
   name_df <-
     data.frame('judge_name' = judge_names, judge_gender = judge_gender, 'file_name' = court_name)
   all_judge_names <- dplyr::bind_rows(all_judge_names, name_df)
