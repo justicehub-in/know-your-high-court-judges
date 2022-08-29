@@ -19,6 +19,8 @@ knitr::opts_chunk$set(echo = TRUE)
 source("libraries.R")
 ```
 
+<hr> 
+
 ```{r read-files, include=FALSE}
 judge_master <-
   readr::read_csv("../data/final-files-nluo/judges_master_file.csv",
@@ -29,13 +31,19 @@ names(total_judges_per_court) <- c("Court", "Total Judges")
 
 ```
 
-Master file of Judges - [Download here](https://raw.githubusercontent.com/justicehub-in/summer-of-data-chapter-1/main/data/final-files-nluo/judges_master_file.csv) _(Right click > Save link as)_
+#### Download Files
+
+1. [Master file of Judges](https://raw.githubusercontent.com/justicehub-in/summer-of-data-chapter-1/main/data/final-files-nluo/judges_master_file.csv) _(Right click > Save link as)_
+
+2. [State level files](https://github.com/justicehub-in/summer-of-data-chapter-1/tree/main/data/final-files-nluo/csv)
+_(Click on File > Click on Raw > Right click > Save link as)_
+
+<hr> 
 
 #### Total Judges
 
 Profile details available for **`r nrow(judge_master)` judges** across  **`r  unique(judge_master$fileTitle) %>% length()`  courts**
 
-#### Number of Judges per court
 ```{r total-judges-per-court, echo=FALSE}
 DT::datatable(
   total_judges_per_court,
@@ -43,4 +51,3 @@ DT::datatable(
   options = list(autoWidth = TRUE)
 )
 ```
-
