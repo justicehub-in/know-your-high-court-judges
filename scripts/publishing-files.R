@@ -105,8 +105,12 @@ excel_to_csv <- function(court_title){
     return(file_details)
 }
 
+
 all_file_details <- lapply(X = all_court_titles,
                            FUN = excel_to_csv)
+
+# Error for Sudanshu Das (Patna HC). His DOB is 03/09/1898. 
+# For now, have manually corrected it in the CSV file.
 
 # Create a master file of judges
 
