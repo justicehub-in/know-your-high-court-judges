@@ -6,7 +6,7 @@ output:
     df_print: default
     number_sections: no
     self_contained: no
-    toc: no
+    toc: yes
     toc_float:
       collapsed: no
 ---
@@ -26,12 +26,49 @@ judge_master <-
   readr::read_csv("../data/final-files-nluo/judges_master_file.csv",
                   col_types = cols(.default = "c"))
 
+judge_master$Gender <- stringr::str_to_title(judge_master$Gender)
+
+
 total_judges_per_court <- table(judge_master$fileTitle) %>% data.frame() %>% arrange(desc(Freq))
 names(total_judges_per_court) <- c("Court", "Total Judges")
 
 ```
 
-#### Download Files
+```{r std_master_files, include=FALSE}
+
+# This section is used to standardise court names across multiple columns
+
+std_parent_hc <- data.frame("phc"=c("Allahabad", "Bombay", "Punjab & Haryana", "Uttrakhand", "Punjab and haryana", "Andra Pradesh", "Calcutta", "Andhra Pradesh", "Patna", "Rajasthan", "Madhya Pradesh", "Karnataka", "Punjab and Haryana", "Gujarat", "Orissa", "Delhi", "Jharkhand", "Chhatisgarh", "Himachal Pradesh", "Sikkim", "J&K and Ladakh", "Gujarat High Court", "Madaras", "Sikkim High Court", "Punjab and Haryana high court", "Andhra Pradesh High Court", "Bombay High Court", "Calcutta High Court", "Delhi High Court", "Jammu and Kashmir", "Madras", "Madaras High Court", "Tamil Nadu", "Punjab & Harayana", "Kerala", "Gauhati", "Calcuta", "Chhattisgarh", "Guwahati", "Andhra Pradesh (Hyderabad)", "Manipur", "Uttarakhand", "Panjab & Haryana", "Jammu and Kashmir and Ladakh", "Jammu & Kashmir", "madras", "Chattisgarh", "Andhar Pradesh", "Himanchal Pradesh", "Meghalaya", "Guahati", "Odisha", "Punjaba and Haryana", "Hyderabad", "Telangana", "Tripura"),
+                            "phc_updated"=c("Allahabad", "Bombay", "PunjabandHaryana", "Uttarakhand", "PunjabandHaryana", "AndhraPradesh", "Calcutta", "AndhraPradesh", "Patna", "Rajasthan", "MadhyaPradesh", "Karnataka", "PunjabandHaryana", "Gujarat", "Orissa", "Delhi", "Jharkhand", "Chhattisgarh", "HimachalPradesh", "Sikkim", "J&KandLadakh", "Gujarat", "Madras", "Sikkim", "PunjabandHaryana", "AndhraPradesh", "Bombay", "Calcutta", "Delhi", "J&KandLadakh", "Madras", "Madras", "Madras", "PunjabandHaryana", "Kerala", "Gauhati", "Calcutta", "Chhattisgarh", "Gauhati", "AndhraPradesh", "Manipur", "Uttarakhand", "PunjabandHaryana", "J&KandLadakh", "J&KandLadakh", "Madras", "Chhattisgarh", "AndhraPradesh", "HimachalPradesh", "Meghalaya", "Gauhati", "Orissa", "PunjabandHaryana", "AndhraPradesh", "Telangana", "Tripura")
+)
+
+std_transfer_1 <- data.frame("transfer_1"=c("allahabad", "Allahabad", "Andhra Pradesh", "Andhra Pradesh (Hyderabad)", "Andhra Pradesh HC", "Andra Pradesh", "Bombay", "Calcutta", "Chhatisgarh", "Chhattisgarh", "Delhi", "Gauhati", "Guahati", "Gujarat", "Gujrat", "Guwahati", "High Court of Judicature for the state of Telangana and Andhra Pradesh", "High Court of Karnataka", "Himachal Pradesh", "Hyderabad", "J&K", "J&K  and Ladakh", "J&K and Ladakh", "Jammu & Kashmir", "Jammu and Kashmir", "Jammu and Kashmir High Court", "Jharkhand", "Karnatak", "Karnataka", "Kerala", "Kerela High Court", "Madaras", "Madaras High Court", "Madhya Pradesh", "Madras", "Manipur", "Meghalaya", "Mumbai", "Orissa", "Orrisa", "Patna", "Punjab & Haryana", "Punjab & Haryana HC", "Punjab and Harayana", "Punjab and Harya", "Punjab and Haryana", "Punjab and Haryana, Chandigarh High Court", "Rajasthan", "Rajisthan", "Sikkim", "Telangana", "Telengana", "Tripura", "Uttarakhand", "Uttarakhand High Court", "Uttrakhand"),
+                             "transfer_1_updated"=c("Allahabad", "Allahabad", "AndhraPradesh", "AndhraPradesh", "AndhraPradesh", "AndhraPradesh", "Bombay", "Calcutta", "Chhattisgarh", "Chhattisgarh", "Delhi", "Gauhati", "Gauhati", "Gujarat", "Gujarat", "Gauhati", "Telangana", "Karnataka", "HimachalPradesh", "AndhraPradesh", "J&KandLadakh", "J&KandLadakh", "J&KandLadakh", "J&KandLadakh", "J&KandLadakh", "J&KandLadakh", "Jharkhand", "Karnataka", "Karnataka", "Kerala", "Kerala", "Madras", "Madras", "MadhyaPradesh", "Madras", "Manipur", "Meghalaya", "Bombay", "Orissa", "Orissa", "Patna", "PunjabandHaryana", "PunjabandHaryana", "PunjabandHaryana", "PunjabandHaryana", "PunjabandHaryana", "PunjabandHaryana", "Rajasthan", "Rajasthan", "Sikkim", "Telangana", "Telangana", "Tripura", "Uttarakhand", "Uttarakhand", "Uttarakhand")
+)
+
+std_transfer_2 <- data.frame("transfer_2"=c("Allahabad", "Andhra Pradesh", "Andhra Pradesh and Telangana", "Bombay", "Calcutta", "Chattisgarh", "Chhattisgarh", "Delhi", "Delhi High Court", "Gauhati", "Gujarat", "High Court of Judicature for the state of Telangana and Andhra Pradesh", "Himachal Pradesh", "J&K and Ladakh", "Jammu and Kashmir", "Jharkhand", "karnataka", "Karnataka", "Kartaka", "Kerala", "Kerela", "Madhya Pradesh", "Madras", "Manipur", "Orissa", "Patna", "Punjab & Haryana", "Punjab and Harya", "Punjab and Haryana", "Punjab And Haryana", "Punjab and Haryana High Court", "Rajasthan", "Sikkim", "Telangana", "Uttarakhand")
+,
+                             "transfer_2_updated"=c("Allahabad", "AndhraPradesh", "Telangana", "Bombay", "Calcutta", "Chhattisgarh", "Chhattisgarh", "Delhi", "Delhi", "Gauhati", "Gujarat", "Telangana", "HimachalPradesh", "J&KandLadakh", "J&KandLadakh", "Jharkhand", "Karnataka", "Karnataka", "Karnataka", "Kerala", "Kerala", "MadhyaPradesh", "Madras", "Manipur", "Orissa", "Patna", "PunjabandHaryana", "PunjabandHaryana", "PunjabandHaryana", "PunjabandHaryana", "PunjabandHaryana", "Rajasthan", "Sikkim", "Telangana", "Uttarakhand")
+)
+
+std_transfer_3 <- data.frame("transfer_3"=c("Allahabad", "Allahabad High Court", "Chattisgarh", "Delhi", "Gujarat", "Jammu and Kashmir", "Madhya Pradesh", "Madras", "Meghalaya", "Orissa", "Patna", "Rajasthan", "Sikkim", "Uttarakhand")
+,
+                             "transfer_3_updated"=c("Allahabad", "Allahabad", "Chhattisgarh", "Delhi", "Gujarat", "J&KandLadakh", "MadhyaPradesh", "Madras", "Meghalaya", "Orissa", "Patna", "Rajasthan", "Sikkim", "Uttarakhand")
+)
+
+judge_master <- left_join(judge_master, std_parent_hc, by=c("Parent High Court"="phc"))
+
+judge_master <- left_join(judge_master, std_transfer_1, by=c("If yes, which High Court 1"="transfer_1"))
+
+judge_master <- left_join(judge_master, std_transfer_2, by=c("If yes, which High Court 2"="transfer_2"))
+
+judge_master <- left_join(judge_master, std_transfer_3, by=c("If yes, which High Court 3"="transfer_3"))
+
+readr::write_csv(judge_master,"../data/final-files-nluo/judges_master_updated_cols.csv")
+```
+
+
+### Download Files
 
 1. [Master file of Judges](https://raw.githubusercontent.com/justicehub-in/summer-of-data-chapter-1/main/data/final-files-nluo/judges_master_file.csv) _(Right click > Save link as)_
 
@@ -40,13 +77,106 @@ _(Click on File > Click on Raw > Right click > Save link as)_
 
 <hr> 
 
-#### Total Judges
+### Total Judges
 
 Profile details available for **`r nrow(judge_master)` judges** across  **`r  unique(judge_master$fileTitle) %>% length()`  courts**
 
 ```{r total-judges-per-court, echo=FALSE}
 DT::datatable(
   total_judges_per_court,
+  filter = 'top',
+  options = list(autoWidth = TRUE)
+)
+```
+
+### Graduation Institution 
+
+```{r graduation-institute, include=FALSE}
+  g_ins <- judge_master %>% group_by(fileTitle, `Graduation Institution`) %>% summarise(total_judges=n())
+g_ins <- g_ins[!is.na(g_ins$`Graduation Institution`),]
+total_judges_with_university <- g_ins$total_judges %>% sum
+```
+
+Here we will need to standardise the university titles to get accurate info. 
+
+University details are available for `r total_judges_with_university`
+judges out of a total of `r nrow(judge_master)` judges.
+
+
+```{r display_graduation_institute, echo=FALSE}
+DT::datatable(
+  g_ins,
+  filter = 'top',
+  options = list(autoWidth = TRUE)
+)
+```
+
+### Judge Transfers
+
+```{r process_transfers, include=FALSE}
+
+# Details for judges who are transferred across courts are stored in files for all courts where 
+# the judge is transferred. So to avoid double counting we are considering transfer records where the 
+# parent high court is same as the fileTitle (the court file title from where the record is picked )
+
+# ex:  Judge (A) - Parent HC (X) - First Transfer (C1) - First Transfer (C2)
+# Transfer details for this judge will be present in files for both C1 and C2. We will
+# only cosider C1 which will be same as the Parent HC.
+
+judge_master_transfer <- judge_master[judge_master$fileTitle == judge_master$phc_updated,]
+
+
+transfer_1 <- judge_master_transfer[,c("fileTitle","phc_updated","transfer_1_updated")]
+names(transfer_1)[] <- c("fileTitle","HC_from","HC_to")
+transfer_1 <- transfer_1[!is.na(transfer_1$HC_to),]
+
+transfer_2 <- judge_master_transfer[,c("fileTitle","transfer_1_updated","transfer_2_updated")]
+names(transfer_2)[] <- c("fileTitle","HC_from","HC_to")
+transfer_2 <- transfer_2[!is.na(transfer_2$HC_to),]
+
+transfer_3 <- judge_master_transfer[,c("fileTitle","transfer_2_updated","transfer_3_updated")]
+names(transfer_3)[] <- c("fileTitle","HC_from","HC_to")
+transfer_3 <- transfer_3[!is.na(transfer_3$HC_to),]
+
+transfer_df <- bind_rows(transfer_1, bind_rows(transfer_2, transfer_3))
+transfer_df_tab <- transfer_df %>% group_by(HC_from,HC_to) %>% summarise(total_judges=n())
+```
+
+There are details available for `r nrow(transfer_df)` transfers (includes first, second and third transfers). 
+
+```{r transfer_table, echo=FALSE}
+DT::datatable(
+  transfer_df_tab,
+  filter = 'top',
+  options = list(autoWidth = TRUE)
+)
+```
+
+### Distribution by Cadre
+
+```{r cadre_distribution, include=FALSE}
+
+cadre_dist <- judge_master_transfer[,c("phc_updated","Cadre","Gender","Experience in High Court Administrative Post"),]
+names(cadre_dist)[] <- c("court", "cadre","gender","admin_post")
+
+cadre_dist_gender <- cadre_dist %>% group_by(court, cadre, gender) %>% summarise(total_judges=n()) %>% pivot_wider(names_from = gender, values_from = "total_judges")
+
+cadre_dist_admin <- cadre_dist %>% group_by(court, cadre, admin_post) %>% summarise(total_judges=n())
+```
+
+```{r cadre_gender, echo=FALSE}
+DT::datatable(
+  cadre_dist_gender,
+  caption = "Distribution by gender",
+  filter = 'top',
+  options = list(autoWidth = TRUE)
+)
+```
+
+```{r cadre_admin_post, echo=FALSE}
+DT::datatable(
+  cadre_dist_admin,
+  caption = "Distribution by High Court Administrative Post",
   filter = 'top',
   options = list(autoWidth = TRUE)
 )

@@ -129,5 +129,7 @@ for(i in 1:length(court_list_csv)){
   all_judges_df <- dplyr::bind_rows(all_judges_df, court_file_i)
 }
 
+all_judges_df$Gender <- stringr::str_to_title(all_judges_df$Gender)
+
 readr::write_csv(all_judges_df,
                  "data/final-files-nluo/judges_master_file.csv")
