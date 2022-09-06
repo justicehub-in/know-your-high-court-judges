@@ -70,7 +70,7 @@ readr::write_csv(judge_master,"../data/final-files-nluo/judges_master_updated_co
 
 ### Download Files
 
-1. [Master file of Judges](https://raw.githubusercontent.com/justicehub-in/summer-of-data-chapter-1/main/data/final-files-nluo/judges_master_file.csv) _(Right click > Save link as)_
+1. [Consolidated master file of Judges](https://raw.githubusercontent.com/justicehub-in/summer-of-data-chapter-1/main/data/final-files-nluo/judges_master_file.csv) _(Right click > Save link as)_
 
 2. [State level files](https://github.com/justicehub-in/summer-of-data-chapter-1/tree/main/data/final-files-nluo/csv)
 _(Click on File > Click on Raw > Right click > Save link as)_
@@ -80,6 +80,8 @@ _(Click on File > Click on Raw > Right click > Save link as)_
 ### Total Judges
 
 Profile details available for **`r nrow(judge_master)` judges** across  **`r  unique(judge_master$fileTitle) %>% length()`  courts**
+
+Total number of judges in each state level file. Here we are only counting the number of rows in each file. 
 
 ```{r total-judges-per-court, echo=FALSE}
 DT::datatable(
