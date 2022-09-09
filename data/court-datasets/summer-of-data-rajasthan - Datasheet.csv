@@ -1,0 +1,85 @@
+Name of the Judge,Gender,Religion,Caste,Date of Birth,State of Birth,Place of Birth,Date of Appointment,Date of Retirement,If Died in Office,If resigned from office,Parent High Court,If transferred to any other High Court,"If yes, which High Court 1",Date of such transfer - 1,"If yes, which High Court 2",Date of such transfer – 2,"If yes, which High Court 3",Date of such transfer - 3,If appointed Chief Justice in another High Court,"If yes, which High Court – 1","If yes, which High Court – 2","If yes, which High Court – 3",If appointed to the Supreme Court,Date of appointment to the Supreme Court,Cadre,Experience in Subordinate Judiciary,Litigation Experience,If a Senior Advocate,Experience in High Court Administrative Post,If served as Government Counsel,If served as Advocate General,If empanelled by PSUs,If empanelled by Banks,If empanelled by any Statutory Body,If empanelled by Private Companies,Chamber Details,Schooling Information,Graduation Institution,Graduation Specialization,Law Degree Institution,Law Degree Year,Bar Enrolment Year,State Bar Association where enrolled,Foreign Degree in Law,Post-Graduate in another subject,Post-Graduate in Law
+Vinod Shanker Dave,Male,,,,,,12-Jun-1984,15-Feb-1994,,,Rajasthan,No,,,,,,,No,,,,No,,,,,,,,,,,,,,,,,,,,,,,
+Jasraj Chopra,Male,,,,,,13-Jul-1985,19-Aug-1995,,,Rajasthan,No,,,,,,,No,,,,No,,,,,,,,,,,,,,,,,,,,,,,
+Farooq Hasan,Male,,,,,,13-Jul-1985,31-Dec-1994,,,Rajasthan,No,,,,,,,No,,,,No,,,,,,,,,,,,,,,,,,,,,,,
+Mohini Kapoor,Female,,,,,,13-Jul-1985,17-Nov-1995,,,Rajasthan,No,,,,,,,No,,,,No,,,,,,,,,,,,,,,,,,,,,,,
+Ashok Kumar Mathur,Male,,,7-Aug-1943,,,13-Jul-1985,7-Jun-2004,No,No,Rajasthan,Yes,Madhya Pradesh,18-Feb-1994,,,,,Yes,Madhya Pradesh,Calcutta,,Yes,7-Jun-2004,Bar,No,Yes,No,NA,Yes,No,,No,,No,No,,University of Calcutta,,University of Calcutta,,,,No,Yes,No
+Milap Chandra Jain,Male,,,,,,30-Jun-1987,18-Dec-1994,,,Rajasthan,No,,,,,,,No,,,,No,,,,,,,,,,,,,,,,,,,,,,,
+Ranveer Sahai Verma,Male,,,,,,26-Dec-1987,7-Jan-1995,,,Rajasthan,No,,,,,,,No,,,,No,,,Yes,,,,,,,,,,,,,,,,,,,,
+N.C. Kochhar,Male,,,26-Mar-1935,,,17-Nov-1986,26-Mar-1997,No,No,Delhi,Yes,Rajasthan,17-Jun-1988,,,,,No,,,,No,,,Yes,,,,,,,,,,,,,,,,,,,,
+Ram Saharan Kejriwal,Male,,,,,,20-Jul-1990,3-Jul-1997,No,No,Rajasthan,No,,,,,,,No,,,,No,,,,,,,,,,,,,,,,,,,,,,,
+Balwant Roy Arora,Male,,,15-Aug-1935,,,20-Jul-1990,14-Aug-1997,No,No,Rajasthan,No,,,,,,,No,,,,No,,,,,,,,,,,,,,,,,,,,,,,
+Navrang Lal Tibrewal,Male,,,17-Jan-1937,Rajasthan,Jhunjhunu,20-Jul-1990,16-Jan-1999,No,No,Rajasthan,No,,,,,,,No,,,,No,,,Yes,Yes,No,,No,No,,,Yes,,Yes,,"Maharaja College, Jaipur",,University Law College,1959,,,No,,
+Nagendra Kumar Jain,Male,,,20-Oct-1942,Rajasthan,Alwar,20-Jul-1990,20-Oct-2004,No,No,Rajasthan,Yes,Madras,18-Nov-1997,,,,,Yes,Madras,Karnataka,,No,,Bar,No,Yes,No,NA,No,No,No,No,Yes,No,No,"Happy School, Mahaveer School, Maharaja College",Rajasthan College of Rajasthan University,,Jodhpur University,1967,1968,Rajasthan,No,,
+Megh Raj Calla,Male,,,12-Mar-1941,,,20-Jul-1990,12-Mar-2003,No,No,Rajasthan,Yes,Gujarat,28-Apr-1994,Rajasthan,10-Sep-2001,,,No,,,,No,,Bar,No,Yes,,NA,,,,,,,,,,,,,1968,Rajasthan,,,
+Ganpat Singh Singhvi,Male,,,12-Dec-1948,Rajasthan,Jodhpur,20-Jul-1990,11-Nov-2007,No,No,Rajasthan,Yes,Punjab and Haryana,28-Apr-1994,Gujarat ,28-Feb-2005,,,Yes,Andhra Pradesh,,,Yes,12-Nov-2007,Bar,No,Yes,No,NA,Yes,No,,,,,Yes,,Jodhpur University,B.Sc.,Rajasthan University,1971,1971,Rajasthan,No,,
+Yad Ram Meena,Male,,,1-Jul-1946,,,20-Jul-1990,30-Jun-2008,No,No,Rajasthan,Yes,Calcutta,21-Dec-1997,Rajasthan,1-Nov-2001,Gujarat,3-Apr-2006,Yes,Gujarat,,,No,,Bar,No,Yes,No,NA,Yes,No,No,No,No,No,No,,,,,,1968,,No,,
+Virendra Kumar Singhal,Male,Hindu,General,,,,21-Oct-1991,14-Dec-1997,,,Rajasthan,No,,,,,,,No,,,,No,,,,,,,,,,,,,,,,,,,,,,,
+Rajesh Balia,Male,,,3-Mar-1946,,,21-Oct-1991,3-Mar-2008,No,No,Rajasthan,Yes,Gujarat,24-Jun-1994,Rajasthan,13-Dec-1999,,,Yes,Patna,,,No,,Bar,No,Yes,No,NA,Yes,No,No,No,No,No,Yes,,,B.Com.,,,1967,Rajasthan,No,,
+Rajendra Prasad Saxena,Male,,,,,,21-Oct-1991,13-May-1998,,,,,,,,,,,No,,,,No,,,,,,,,,,,,,,,,,,,,,,,
+Vinod Kumar Bali,Male,,,24-Jan-1945,,,15-Mar-1991,24-Jan-2007,No,No,Punjab and Haryana,Yes,Rajasthan,28-Feb-2005,,,,,Yes,Kerala,,,No,,Bar,No,Yes,Yes,NA,No,No,No,No,Yes,No,No,,,,"Panjab University, Chandigarh",1967,1967,Haryana,No,,
+Anshuman Singh,Male,,,7-Jul-1935,,,24-May-1984,6-Jul-1997,No,No,Allahabad,Yes,Rajasthan,28-Apr-1994,,,,,No,,,,No,,,,Yes,No,No,Yes,No,No,No,No,No,,,,,,,1960,,No,,
+Maheshwari Prasad Singh,Male,,,10-Apr-1936,,,31-Jul-1987,,No,No,Allahabad,Yes,Rajasthan,28-Apr-1994,Allahabad,,,,No,,,,No,,,,Yes,No,No,No,No,No,No,No,No,,,,,,,1960,,No,,
+Vishnu Sadashiv Kokje,Male,Hindu,,6-Sep-1939,Madhya Pradesh,Dhar,28-Jul-1990,6-Sep-2001,No,No,Madhya Pradesh,Yes,Rajasthan,28-Apr-1994,,,,,No,,,,No,,Bar,No,Yes,Yes,NA,No,No,No,No,No,,,,"Holkar College, Indore","Mathematics, Statistics and Economics","Government Arts and Commerce College, Indore",,1964,,No,Yes,No
+Behram Jahanbux Shethna ,Male,,,14-Jul-1947,,,22-Nov-1990,10-Apr-2007,No,Yes,Gujarat,Yes,Rajasthan,28-Oct-1994,Gujarat,4-Jun-2001,,,No,,,,No,,Bar,No,Yes,,NA,No,No,No,No,Yes,No,,,,,"Sir V. T. Chokshi Law College, Surat",1970,1970,Gujarat,No,No,No
+Prakash Prabhakar Naolekar,Male,,,29-Jun-1943,Madhya Pradesh,Jabalpur,15-Jun-1992,28-Jul-2004,No,No,Madhya Pradesh,Yes,Rajasthan,28-Apr-1994,,,,,Yes,Gauhati,,,Yes,28-Jul-2004,Bar,No,Yes,No,NA,Yes,No,No,No,Yes,,Yes,,Jabalpur University,B.Com.,Jabalpur University,1965,1965,Madhya Pradesh,No,No,No
+Arun Madan,Male,,,7-Apr-1945,,,3-Mar-1993,21-Mar-2003,No,Yes,Delhi,Yes,Rajasthan,24-Feb-1994,,,,,No,,,,No,,,,Yes,,,,,,,,,,,,,,,1968,,No,No,No
+Vishwanath Gopal Palshikar,Male,,,7-Jan-1945,,,20-Jan-1994,7-Jan-2007,No,No,Bombay,Yes,Rajasthan,14-Feb-1994,Bombay,1-Jun-2001,,,No,,,,No,,Bar,No,Yes,,NA,,,,,,,,,,,,,1968,,No,No,No
+Shiv Kishore Keshote,Male,,,1-Jan-1944,,,31-Jan-1994,1-Jan-2006,No,No,Rajasthan,Yes,Allahabad,17-Feb-1994,Gujarat,13-Dec-1994,Rajasthan,27-May-2001,No,,,,No,,Bar,No,Yes,,NA,,,,,,,,,,,,,1968,,,,
+Narendra Narain Mathur,Male,,,20-Feb-1945,,,31-Jan-1994,20-Feb-2007,No,No,Rajasthan,Yes,Gujarat,15-Feb-1994,Rajasthan,24-Feb-1999,,,No,,,,No,,Bar,No,Yes,Yes,NA,,,,,,,,,,,,,1970,,,,
+Rajendra Mal Lodha,Male,,,28-Sep-1949,Rajasthan,Jodhpur,31-Jan-1994,16-Dec-2008,No,No,Rajasthan,Yes,Bombay,16-Feb-1994,Rajasthan,2-Feb-2007,,,Yes,Patna,,,Yes,17-Dec-2008,Bar,No,Yes,No,NA,Yes,No,,No,Yes,No,No,,University of Jodhpur,B.Sc.,University of Jodhpur,,1973,Rajasthan,No,No,No
+Om Prakash Jain,Male,,,,,,31-Jan-1994,9-Apr-1999,,,Rajasthan,Yes,Allahabad,17-Feb-1994,,,,,No,,,,No,,,,,,,,,,,,,,,,,,,,,,,
+R.R. Yadav,Male,,,1-Aug-1940,,,1-Feb-1994,31-Jul-2002,No,No,Allahabad,Yes,Rajasthan,15-Feb-1994,Allahabad,1-Jun-2001,,,No,,,,No,,Bar,No,Yes,,NA,,,,,,,,,,,,,1964,,,,
+Prem Krishan Palli,Male,,,26-Oct-1936,,,14-Feb-1994,26-Oct-1998,No,No,Punjab and Haryana,Yes,Rajasthan,1-Mar-1994,Himachal Pradesh,2-Apr-1996,,,No,,,,No,,Bar,,Yes,Yes,NA,,,,,,,,,,,,,1961,Punjab,No,No,No
+Gyan Sudha Mishra,Female,Hindu,General,28-Apr-1949,,,16-Mar-1994,29-Apr-2010,No,No,Patna,Yes,Rajasthan,21-Apr-1994,,,,,Yes,Jharkhand,,,Yes,30-Apr-2010,Bar,No,Yes,No,NA,Yes,No,,,Yes,,,,,,Patna University,,1972,Bihar,No,Yes,No
+Amratlal Paramananddas Ravani,Male,,,26-Sep-1934,,,26-May-1982,11-Sep-1996,No,Yes,Gujarat,Yes,Rajasthan,25-Feb-1995,,,,,Yes,Rajasthan,,,No,,Bar,No,Yes,No,NA,Yes,No,,,,,,,,,,,1962,Gujarat,,,
+Prem Chand Jain,Male,,,,,,22-Jul-1995,11-Sep-1998,,,,,,,,,,,No,,,,No,,,,,,,,,,,,,,,,,,,,,,,
+Dinesh Chandra Dalela,Male,,,,,,22-Jul-1995,20-May-1999,,,,,,,,,,,No,,,,No,,,Yes,,,,,,,,,,,,,,,,,,,,
+P.K. Tewari,Male,,,,,,22-Jul-1995,17-Jul-2000,,,,,,,,,,,No,,,,No,,,,,,,,,,,,,,,,,,,,,,,
+G.L. Gupta,Male,Hindu,General,,,,22-Jul-1995,9-Nov-2000,No,No,Rajasthan,No,,,,,,,No,,,,No,,,,,,,,,,,,,,,,,,,,,,,
+M.A.A. Khan,Male,Muslim,,,,,22-Jul-1995,6-Jan-2000,,,,,,,,,,,No,,,,No,,,,,,,,,,,,,,,,,,,,,,,
+M.G. Mukherjee,Male,,,,,,,,,,Calcutta,,,,,,,,Yes,Rajasthan,,,No,,,,,,,,,,,,,,,,,,,,,,,
+Jogindra Singh Siddhu,Male,,,30-Jan-1937,,,20-Jun-1994,30-Jan-1999,No,No,Punjab and Haryana,Yes,Allahabad,21-Jul-1994,Rajasthan,11-Oct-1996,,,No,,,,No,,Service,Yes,Yes,No,,,No,,,,,,,,,,,1963,,No,No,No
+Shiv Kumar Sharma,Male,Hindu,General,,,,6-Apr-1996,10-Oct-2008,,,,,,,,,,,No,,,,No,,,,,,,,,,,,,,,,,,,,,,,
+Bhagwati Prasad,Male,,,13-May-1949,Rajasthan,Hanumangarh,6-Apr-1996,12-May-2011,No,No,Rajasthan,Yes,Gujarat,7-Feb-2008,,,,,Yes,Jharkhand,,,No,,Bar,No,Yes,No,NA,No,No,,,Yes,No,,,"Government College, Hissar",B.Sc.,"Doongar College, Bikaner",1972,1972,Rajasthan,No,No,Yes
+Ashok Kumar Parihar,Male,,,25-Aug-1947,,,6-Apr-1996,24-Aug-2009,No,No,Rajasthan,No,,,,,,,No,,,,No,,Bar,,Yes,,NA,,,,,Yes,,,,,,,,1974,,,Yes,No
+S.C. Mittal,Male,Hindu,General,,,,6-Apr-1996,12-Aug-2000,,,,,,,,,,,No,,,,No,,,,,,,,,,,,,,,,,,,,,,,
+Amar Singh Godara,Male,,,,,,6-Apr-1996,1-May-1999,No,No,Rajasthan,No,,,,,,,No,,,,No,,,Yes,,,,,,,,,,,,,,,,,,,,
+Mohd. Yamin,Male,Muslim,,,,,6-Apr-1996,3-Jul-2001,No,,,,,,,,,,No,,,,No,,,,,,,,,,,,,,,,,,,,,,,
+A.K. Singh,Male,,,,,,6-Apr-1996,14-Aug-2000,,,,,,,,,,,No,,,,No,,,,,,,,,,,,,,,,,,,,,,,
+Nand Kumar Agarwal,Male,Hindu,General,,,,6-Apr-1996,12-Dec-1999,,,Rajasthan,Yes,Punjab and Haryana,29-Apr-1996,,,,,No,,,,No,,,,,,,,,,,,,,,,,,,,,,,
+Jagdish Chandra Verma,Male,,,,,,8-Apr-1996,15-Dec-2001,No,No,Punjab and Haryana,Yes,Rajasthan,14-May-1996,,,,,No,,,,No,,,,,,,,,,,,,,,,,,,,,,,
+Balbir Singh Chauhan ,Male,,,2-Jul-1949,,,5-Apr-1995,11-May-2009,No,No,Allahabad,Yes,Rajasthan,17-Jul-1997,Allahabad,13-Mar-2003,,,Yes,Odisha,,,Yes,11-May-2009,Bar,No,Yes,No,NA,Yes,No,No,No,No,No,,,Meerut University,B.Sc.,Banaras Hindu University,1974,1974,,Yes,No,Yes
+Arvind Mohanlal Kapadia,Male,,,4-Mar-1949,,,11-Dec-1997,4-Mar-2011,No,No,Gujarat,Yes,Rajasthan,4-Sep-2008,Gujarat,16-May-2010,,,No,,,,No,,Service,Yes,Yes,No,,,,,,,,,,,B.A. (Hons.) Economics,,1971,1972,Gujarat,No,No,No
+Pradeepkumar Bhadrayulal Majmudar,Male,,,9-Sep-1950,,,17-Sep-1999,9-Sep-2012,No,No,Gujarat,Yes,Rajasthan,10-Apr-2007,Bombay,25-Apr-2008,Gujarat,22-May-2012,No,,,,No,,Bar,No,Yes,No,NA,Yes,No,,,,,,,The Maharaja Sayajirao University of Baroda,B.Com.,The Maharaja Sayajirao University of Baroda,,1974,Gujarat,No,No,No
+Abhay Manohar Sapre,Male,,,28-Aug-1954,Madhya Pradesh,Jabalpur,25-Oct-1999,12-Aug-2014,No,No,Madhya Pradesh,Yes,Rajasthan,11-Feb-2010,Chhattisgarh,23-Apr-2012,,,Yes,Manipur,Gauhati,,Yes,13-Aug-2014,Bar,No,Yes,No,NA,Yes,No,No,No,No,No,No,"Model High School, Jabalpur","Government Arts College, Jabalpur",B.A.,"University Teaching Department (VTD) Jabalpur, University of Jabalpur",,1978,Madhya Pradesh,No,No,No
+Arun Kumar Mishra,Male,Hindu,General,3-Sep-1955,,,25-Oct-1999,6-Jul-2014,No,No,Madhya Pradesh,Yes,Rajasthan,12-Sep-2010,,,,,Yes,Rajasthan,Calcutta,,Yes,7-Jul-2014,Bar,No,Yes,No,NA,,No,Yes,No,Yes,,,,,B.Sc.,,,1978,Madhya Pradesh,No,Yes,No
+Narayan Prasad Gupta,Male,Hindu,General,21-Jan-1948,,,20-Jan-2000,20-Jan-2010,No,No,Rajasthan,No,,,,,,,No,,,,No,,Bar,No,Yes,,,,,,,,,,,,B.A.,,,1969,Rajasthan,No,No,No
+D.N. Joshi,Male,,,,,,20-Jan-2000,11-Oct-2003,,,Rajasthan,No,,,,,,,No,,,,No,,Service,Yes,,,,,,,,Yes,,,,,,,,,,,,
+S.K. Garg,Male,Hindu,General,,,,29-Mar-2000,20-Feb-2005,No,Yes,Rajasthan,,,,,,,,No,,,,No,,,,,,,,,,,,,,,,,,,,,,,
+Karni Singh Rathore,Male,,,15-Apr-1948,,,30-Oct-2000,14-Apr-2010,No,No,Rajasthan,No,,,,,,,No,,,,No,,Bar,No,Yes,No,NA,Yes,No,No,No,Yes,No,,,,B.A.,,,1977,Rajasthan,No,No,No
+Rattan Chand Gandhi,Male,,,22-Jan-1948,,,6-Jan-1995,22-Jan-2010,No,No,Jammu and Kashmir,Yes,Rajasthan,17-Jan-2006,,,,,No,,,,No,,Bar,No,Yes,No,NA,Yes,,,,,,,,,B.A.,,,1974,Jammu and Kashmir,No,Yes,No
+Prakash Chandra Tatia,Male,,,4-Aug-1951,,,11-Jan-2001,3-Aug-2013,No,No,Rajasthan,Yes,Jharkhand,11-Apr-2011,,,,,Yes,Jharkhand,,,No,,Bar,No,Yes,No,NA,Yes,No,,No,Yes,,,,,B.Sc.,Jodhpur University,1975,1975,Rajasthan,No,No,No
+Himmat Ram Panwar,Male,,,11-Feb-1948,,,11-Jan-2001,11-Feb-2010,No,No,Rajasthan,No,,,,,,,No,,,,No,,Bar,No,Yes,,,,,,,Yes,,,,,B.A.,,,1982,Rajasthan,No,No,No
+Khem Chand Sharma,Male,Hindu,General,,,,11-Jan-2001,7-Aug-2010,,,,,,,,,,,No,,,,No,,,,,,,,,,,,,,,,,,,,,,,
+Shashikant Sharma,Male,Hindu,General,,,,11-Jan-2001,16-Jun-2006,,,,,,,,,,,No,,,,No,,,,,,,,,,,,,,,,,,,,,,,
+Jagat Singh,Male,,,1-Mar-1941,,,1-Mar-2001,28-Feb-2003,,,,,,,,,,,No,,,,No,,,,,,,,,,,Yes,,,,,,,,,,,,
+O.P. Bishnoi,Male,,,,,,29-Aug-2001,10-Jul-2004,,,,,,,,,,,No,,,,No,,,,,,,,,,,,,,,,,,,,,,,
+Anoop Chand Goyal,Male,Hindu,General,,,,29-Aug-2001,25-Feb-2005,,,,,,,,,,,No,,,,No,,,,,,,,,,,,,,,,,,,,,,,
+Harbans Lal,Male,,,,,,29-Aug-2001,12-Mar-2007,,,,,,,,,,,No,,,,No,,,,,,,,,,,,,,,,,,,,,,,
+K.K. Acharya,Male,,,,,,5-Mar-2002,8-Aug-2008,,,,,,,,,,,No,,,,No,,,,,,,,,,,,,,,,,,,,,,,
+F.C. Bansal,Male,Hindu,General,,,,5-Mar-2002,1-Jan-2006,,,,,,,,,,,No,,,,No,,,,,,,,,,,,,,,,,,,,,,,
+Dalip Singh,Male,,,18-Nov-1950,,,2-Sep-2004,18-Nov-2012,No,No,Rajasthan,No,,,,,,,No,,,,No,,Bar,No,Yes,No,NA,Yes,No,,No,Yes,No,,,,B.A. (Hons.),,,1974,Rajasthan,No,No,No
+Narendra Kumar Jain,Male,,,8-Oct-1952,Rajasthan,Tonk,2-Sep-2004,7-Oct-2014,No,No,Rajasthan,Yes,Sikkim,30-Sep-2013,,,,,Yes,Sikkim,,,No,,Bar,No,Yes,No,NA,Yes,No,Yes,Yes,Yes,,No,Tonk District,Tonk District,B.Com.,University of Delhi,1977,1978,Rajasthan,No,No,No
+Rajendra Prasad Vyas,Male,,,,,,2-Sep-2004,27-Oct-2006,Yes,No,Rajasthan,No,,,,,,,No,,,,No,,,,,,,,,,,,,,,,,,,,,,,
+Dinesh Maheshwari,Male,,,15-May-1958,Rajasthan,Udaipur,2-Sep-2004,17-Jan-2019,No,No,Rajasthan,Yes,Allahabad,18-Jul-2014,,,,,Yes,Meghalaya,Karnataka,,Yes,18-Jan-2019,Bar,No,Yes,No,NA,Yes,,Yes,Yes,Yes,,,,"Maharaja's College, University of Rajasthan, Jaipur",B.Sc. (Hons.) Physics,Jodhpur University,1980,1981,Rajasthan,No,No,No
+Jitendra Rai Goyal,Male,Hindu,General,4-Apr-1948,,,2-Feb-2005,4-Apr-2010,No,No,Rajasthan,No,,,,,,,No,,,,No,,Service,Yes,Yes,No,Yes,No,No,No,No,No,No,No,,,B.A.,,,1971,Rajasthan,No,No,No
+Manak Lal Mohta,Male,,,1-Jul-1947,,,2-Feb-2005,1-Jul-2009,No,No,Rajasthan,No,,,,,,,No,,,,No,,Service,Yes,,,Yes,,,,,,,No,,,B.Com. ,,,1971,Rajasthan,No,No,No
+Suresh Chandra Singhal,Male,Hindu,General,,,,2-Feb-2005,8-Mar-2005,Yes,No,Rajasthan,No,,,,,,,No,,,,No,,,,,,,,,,,,,,,,,,,,,,,
+Satyaprakash Pathak,Male,,,15-Dec-1948,,,2-Feb-2005,15-Dec-2010,No,No,Rajasthan,No,,,,,,,No,,,,No,,Service,Yes,Yes,No,Yes,,No,,,,,,,,B.A.,,,1973,Rajasthan,No,No,No
+Prem Shankar Asopa,Male,,,30-Sep-1951,,,13-Jun-2005,29-Sep-2013,No,No,Rajasthan,No,,,,,,,No,,,,No,,Bar,No,Yes,No,NA,Yes,No,Yes,,Yes,,,,,,,,1974,Rajasthan,No,No,No
+Chatra Ram Jat,Male,,,,,,20-Jan-2006,1-Sep-2008,No,No,Rajasthan,No,,,,,,,No,,,,No,,,,,,,,,,,,,,,,,,,,,,,
+Gauri Shanker Sarraf,Male,,,1-Jul-1948,,,20-Jan-2006,1-Jul-2010,No,No,Rajasthan,No,,,,,,,No,,,,No,,Service,Yes,,No,Yes,,,,,,,,,,B.A.,,,,,,No,Yes
+Guman Singh,Male,,,6-Feb-1948,,,12-Mar-2007,6-Feb-2010,No,No,Rajasthan,No,,,,,,,No,,,,No,,Service,Yes,,No,Yes,,,,,,,,,,B. A. (Hons),,,,,No,No,No
+Bhanwaru Khan Parian,Male,,,1-Jul-1947,,,12-Mar-2007,1-Jul-2009,No,No,Rajasthan,No,,,,,,,No,,,,No,,Service,Yes,,No,Yes,,,,,,,,,,B.Sc.,,,,,No,No,No
+Deo Narayan Thanvi,Male,,,3-Jun-1948,,,12-Mar-2007,3-Jun-2010,No,No,Rajasthan,No,,,,,,,No,,,,No,,Service,Yes,Yes,No,Yes,,,,,,,,,,B.A.,,,1971,Rajasthan,No,No,No
