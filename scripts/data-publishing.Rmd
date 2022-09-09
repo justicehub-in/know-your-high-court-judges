@@ -126,11 +126,9 @@ DT::datatable(
 )
 ```
 
-### Q3 - Distribution of judges by cadre in each state
+### [D] Q3 - Distribution of judges by cadre in each state
 
 [Visual](https://www.datawrapper.de/_/m1Hkx/)
-
-**Some discrepancies here**
 
 ```{r state-wise-judges-by-cadre, echo=FALSE, warning=FALSE}
 
@@ -256,9 +254,9 @@ DT::datatable(
 
 ```
 
-### Q7 - Private empanelment and prior litigation experience
+### [D] Q7 - Private empanelment and prior litigation experience
 
-**Some discrepency here**
+[Visual](https://www.datawrapper.de/_/IUSYP/)
 
 ```{r empanelment-litigation, echo=FALSE, message=FALSE, warning=FALSE}
 state_df$`Litigation Experience` <- stringr::str_to_title(state_df$`Litigation Experience`)
@@ -286,9 +284,9 @@ DT::datatable(
 
 ```
 
-### Q8 - School and Law Degree data availability
+### [D] Q8/Q9 - School and Law Degree data availability
 
-**Some discrepancy here**
+[Visual](https://www.datawrapper.de/_/j0Tsz/)
 
 ```{r school-law-deg-info, echo=FALSE, message=FALSE, warning=FALSE}
 
@@ -298,9 +296,18 @@ law_deg_na <- data_for_analysis %>% filter(is.na(`Law Degree Institution`)) %>% 
 
 total_judges <- data_for_analysis %>% group_by(fileTitle) %>% summarise(totalJudges=n())
 
+law_total <- left_join(total_judges, law_deg_na, by = NULL)
+
 info_na <-
-  left_join(school_na, left_join(law_deg_na, total_judges, by = NULL), by =
-              NULL)
+  left_join(law_total, school_na, by = NULL)
+
+info_na[is.na(info_na)] <- 0
+
+info_na <- info_na[,c("fileTitle","school_info_na","law_degree_info_na","totalJudges")]
+
+info_na <- info_na %>% mutate(sna_percent=round(school_info_na/totalJudges*100,2),
+                              lna_percent = round(law_degree_info_na/totalJudges*100,2))
+
 DT::datatable(
   info_na,
   filter = 'top',
