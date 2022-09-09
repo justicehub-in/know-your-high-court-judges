@@ -36,6 +36,7 @@ for(i in 1:length(all_state_files)){
 }
 
 state_df$Gender <- stringr::str_to_title(state_df$Gender)
+state_df$courtTitle <- stringr::str_replace_all(string = state_df$courtTitle, pattern = "KHOJ_",replacement = "") %>% stringr::str_replace_all(pattern = "\\.csv",replacement = "")
 
 # judge_master <-
 #   readr::read_csv("../data/final-files-nluo/judges_master_file.csv",
@@ -98,6 +99,8 @@ data_for_analysis$`Post-Graduate in Law` <- stringr::str_to_title(data_for_analy
 
 Total number of judges in each state level file. Here we are only counting the number of rows in each file. 
 
+[Visual](https://www.datawrapper.de/_/3xI7Q/) 
+
 ```{r total-judges-per-court, echo=FALSE}
 
 total_judges_per_court <- state_df %>% group_by(courtTitle) %>% summarise(total=n())
@@ -110,9 +113,13 @@ DT::datatable(
 ```
 
 ### Q2 - Distribution of judges by cadre
+
+[Visual](https://www.datawrapper.de/_/szxYA/)
+
 ```{r judges-by-cadre, echo=FALSE}
 
-cadre_dist <- data_for_analysis %>% group_by(Cadre) %>% summarise(total=n())
+cadre_dist <- data_for_analysis %>% group_by(Cadre) %>% summarise(total=n()) %>% mutate(percent=round(total/sum(total)*100,2))
+cadre_dist$Cadre[is.na(cadre_dist$Cadre)] <- "Not Available"
 DT::datatable(
   cadre_dist,
   options = list(autoWidth = TRUE)
@@ -120,6 +127,8 @@ DT::datatable(
 ```
 
 ### Q3 - Distribution of judges by cadre in each state
+
+[Visual](https://www.datawrapper.de/_/m1Hkx/)
 
 **Some discrepancies here**
 
@@ -135,15 +144,20 @@ cadre_dist_state <-
                               (Bar + Service) * 100, 2)
   )
 
+cadre_dist_state$service_cat <- "lt30"
+cadre_dist_state$service_cat[cadre_dist_state$service_percent>=30] <- "mt30"
+
+cadre_dist_state$bar_percent <- NULL
+cadre_dist_state$service_percent <- NULL
+
+
 DT::datatable(
   cadre_dist_state,
   options = list(autoWidth = TRUE)
 )
 ```
 
-### Q4 - Gender distribution of judges  in each state
-
-**Some discrepancies here**
+### Q4 - Gender distribution of judges in each state
 
 ```{r gender-distribution, echo=FALSE}
 
@@ -233,7 +247,7 @@ DT::datatable(
 
 ### Q7 - Private empanelment and prior litigation experience
 
-**Some discrepncy here**
+**Some discrepency here**
 
 ```{r empanelment-litigation, echo=FALSE, message=FALSE, warning=FALSE}
 state_df$`Litigation Experience` <- stringr::str_to_title(state_df$`Litigation Experience`)
