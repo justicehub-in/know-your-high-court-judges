@@ -317,9 +317,12 @@ DT::datatable(
 ```
 
 ### Q10 - Foreign Education Degree
-```{r foreign-edu, echo=FALSE, message=FALSE, warning=FALSE}
-fdl <- data_for_analysis %>% group_by(fileTitle, `Foreign Degree in Law`) %>% summarise(total=n()) %>% pivot_wider(names_from = `Foreign Degree in Law`,values_from = total)
 
+[Visual](https://www.datawrapper.de/_/zpAmL/)
+
+```{r foreign-edu, echo=FALSE, message=FALSE, warning=FALSE}
+fdl <- data_for_analysis %>% group_by(fileTitle, `Foreign Degree in Law`) %>% summarise(total=n()) %>% pivot_wider(names_from = `Foreign Degree in Law`,values_from = total) %>% mutate(yes_percent=round(Yes/(Yes+No)*100,2))
+fdl$yes_percent[is.na(fdl$yes_percent)] <- 0
 DT::datatable(
   fdl,
   filter = 'top',
@@ -329,8 +332,14 @@ DT::datatable(
 ```
 
 ### Q11 - PG Degree
+
+[Visual](https://www.datawrapper.de/_/rvhyT/)
+
 ```{r pg-degree, echo=FALSE, message=FALSE, warning=FALSE}
-pgdl <- data_for_analysis %>% group_by(fileTitle, `Post-Graduate in Law`) %>% summarise(total=n()) %>% pivot_wider(names_from = `Post-Graduate in Law`,values_from = total)
+pgdl <- data_for_analysis %>% group_by(fileTitle, `Post-Graduate in Law`) %>% summarise(total=n()) %>% pivot_wider(names_from = `Post-Graduate in Law`,values_from = total) %>% mutate(yes_percent=round(Yes/(Yes+No)*100,2))
+
+pgdl$yes_percent[is.na(pgdl$yes_percent)] <- 0
+
 
 DT::datatable(
   pgdl,
@@ -341,17 +350,23 @@ DT::datatable(
 ```
 
 ### Q12 - Chief Justices Cadre
+
+[Visual](https://www.datawrapper.de/_/5Sjhd/)
+
+
 ```{r chief-justices, echo=FALSE, message=FALSE, warning=FALSE}
 total_cj <- data_for_analysis %>% filter(`If appointed Chief Justice in another High Court` == "Yes") %>% nrow
 
 total_female_cj <- data_for_analysis %>% filter(`If appointed Chief Justice in another High Court` == "Yes" & Gender == "Female") %>% nrow
 
-cj_cadre <- data_for_analysis %>% filter(`If appointed Chief Justice in another High Court` == "Yes") %>% group_by(Cadre) %>% summarise(total=n()) %>% pivot_wider(names_from=Cadre, values_from=total)
+cj_cadre <- data_for_analysis %>% filter(`If appointed Chief Justice in another High Court` == "Yes") %>% group_by(Cadre) %>% summarise(total=n()) %>% pivot_wider(names_from=Cadre, values_from=total) %>% mutate(bar_percent=round(Bar/(Bar+Service)*100,2), service_percent=round(Service/(Bar+Service)*100,2))
 
 DT::datatable(
   cj_cadre,
   options = list(autoWidth = TRUE)
 )
+
+cji_data_for_viz <- data.frame("Cadre"=c("Bar","Service"),"Percent Judges"=c(cj_cadre$bar_percent[1], cj_cadre$service_percent[1]))
 ```
 
 Total CJ's - `r total_cj`
