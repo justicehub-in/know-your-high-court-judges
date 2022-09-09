@@ -10,8 +10,8 @@ source("scripts/libraries.R")
 
 # Reading xlsx files --------------------------------------------------------
 
-xlsx_folder_path <- "data/final-files-nluo/xlsx"
-csv_folder_path <- "data/final-files-nluo/csv"
+xlsx_folder_path <- "data/final-files-nluo/state_files/xlsx/v2/"
+csv_folder_path <- "data/final-files-nluo/state_files/csv/v2/"
 all_court_titles <- dir(xlsx_folder_path)
 # all_court_titles <- all_court_titles[!all_court_titles %in% c("Final (J&K and Ladakh High Court).xlsx")]
 all_col_names <-
@@ -80,8 +80,7 @@ excel_to_csv <- function(court_title){
     # Update file title
     updated_court_title <- court_title %>% 
       stringr::str_squish() %>% 
-      stringr::str_replace_all(pattern = "Final \\(",replacement = "") %>% 
-      stringr::str_replace_all(pattern = "\\)\\.xlsx",replacement = "") %>% 
+      stringr::str_replace_all(pattern = "\\.xlsx",replacement = "") %>% 
       stringr::str_remove_all(pattern = " ")
 
     # Check col names
