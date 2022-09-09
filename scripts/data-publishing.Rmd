@@ -159,6 +159,8 @@ DT::datatable(
 
 ### Q4 - Gender distribution of judges in each state
 
+[Visual](https://www.datawrapper.de/_/YFEO6/)
+
 ```{r gender-distribution, echo=FALSE}
 
 gender_dist_state <- state_df %>% group_by(courtTitle, Gender) %>% summarise(total=n())
@@ -184,6 +186,8 @@ There are `r nrow(service_cadre_with_hc_admin)` judges who have experience worki
 
 _Note: Here we are only counting transfers from Parent High Court_
 
+[Visual](https://www.datawrapper.de/_/NMgJl/)
+
 ```{r judge-transfers, echo=FALSE}
 transfer_from <- data_for_analysis %>% filter(`If transferred to any other High Court` == "Yes") %>% group_by(`Parent High Court`) %>% summarise(total_transfers = n())
 
@@ -193,9 +197,13 @@ DT::datatable(
   options = list(autoWidth = TRUE)
 )
 
+
 ```
 
 ### Q6 - 2 - Transfer to High Court
+
+[Visual](https://www.datawrapper.de/_/qISLd/)
+
 ```{r transfer-to, echo=FALSE}
 
 transfer_1 <- data_for_analysis[,c("fileTitle","Parent High Court","If yes, which High Court 1")]
@@ -221,6 +229,9 @@ DT::datatable(
 ```
 
 ### Q6 - 3 - Number of transfers 
+
+[Visual](https://www.datawrapper.de/_/oIhKs/)
+
 ```{r num-judge-transfers, echo=FALSE}
 
 transferred_any <- data_for_analysis %>% filter(`If transferred to any other High Court` == "Yes")
