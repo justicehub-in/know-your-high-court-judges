@@ -1,5 +1,5 @@
 ---
-title: "Summer of Data - Data Publishing"
+title: "KHOJ - Data Tables - For Publishing"
 date: "`r Sys.Date()`"
 output: 
   html_document:
@@ -78,7 +78,7 @@ readr::write_csv(judge_master,"../data/final-files-nluo/judges_master_updated_co
 
 ```{r Read files for analysis, include=FALSE}
 
-# Change this variable if using a different file for generating insights
+# This is the path of updated consolidated file (All judges across all high courts)
 data_for_analysis_path <- "../data/shared-by-smita/KHOJ MASTER FINAL.csv"
 data_for_analysis <-
   readr::read_csv(data_for_analysis_path, col_types = cols(.default = "c"))
