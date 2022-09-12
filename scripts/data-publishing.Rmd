@@ -207,17 +207,17 @@ DT::datatable(
 
 ```{r transfer-to, echo=FALSE}
 
-transfer_1 <- data_for_analysis[,c("fileTitle","Parent High Court","If yes, which High Court 1")]
+transfer_1 <- data_for_analysis[data_for_analysis$`If transferred to any other High Court` == "Yes",c("fileTitle","Parent High Court","If yes, which High Court 1")]
 names(transfer_1)[] <- c("fileTitle","HC_from","HC_to")
-transfer_1 <- transfer_1[!is.na(transfer_1$HC_to),]
 
-transfer_2 <- data_for_analysis[,c("fileTitle","If yes, which High Court 1","If yes, which High Court 2")]
+transfer_2 <- data_for_analysis[data_for_analysis$`If transferred to any other High Court` == "Yes",c("fileTitle","If yes, which High Court 1","If yes, which High Court 2")]
 names(transfer_2)[] <- c("fileTitle","HC_from","HC_to")
-transfer_2 <- transfer_2[!is.na(transfer_2$HC_to),]
+transfer_2 <- transfer_2[!transfer_2$HC_to %in% c("Not Applicable"),]
 
-transfer_3 <- data_for_analysis[,c("fileTitle","If yes, which High Court 2","If yes, which High Court 3")]
+
+transfer_3 <- data_for_analysis[data_for_analysis$`If transferred to any other High Court` == "Yes",c("fileTitle","If yes, which High Court 2","If yes, which High Court 3")]
 names(transfer_3)[] <- c("fileTitle","HC_from","HC_to")
-transfer_3 <- transfer_3[!is.na(transfer_3$HC_to),]
+transfer_3 <- transfer_3[!transfer_3$HC_to %in% c("Not Applicable"),]
 
 transfer_df <- bind_rows(transfer_1, bind_rows(transfer_2, transfer_3))
 transfers_to <- transfer_df %>% group_by(HC_to) %>% summarise(total=n())
