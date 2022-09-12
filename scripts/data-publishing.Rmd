@@ -100,9 +100,13 @@ data_for_analysis$`Chamber Details` <- stringr::str_to_title(data_for_analysis$`
 
 <!-- <hr>  -->
 
+
 ### Q1 - Total number of judges by state
 
-Total number of judges in each state level file. Here we are only counting the number of rows in each file. 
+Profile details available for **`r nrow(data_for_analysis)` ** judges across **`r length(unique(data_for_analysis$fileTitle))` ** high courts appointed in the **last 28 years (6th October 1993 - 31st May 2021) ** . 
+
+
+_Total number of judges in each state level file. Here we are only counting the number of rows in each file. _
 
 [Visual](https://www.datawrapper.de/_/3xI7Q/) 
 
@@ -131,7 +135,7 @@ DT::datatable(
 )
 ```
 
-### [D] Q3 - Distribution of judges by cadre in each state
+### Q3 - Distribution of judges by cadre in each state
 
 [Visual](https://www.datawrapper.de/_/m1Hkx/)
 
@@ -260,7 +264,7 @@ DT::datatable(
 
 ```
 
-### [D] Q7 - Private empanelment and prior litigation experience
+### Q7 - Private empanelment and prior litigation experience
 
 [Visual](https://www.datawrapper.de/_/IUSYP/)
 
@@ -290,7 +294,7 @@ DT::datatable(
 
 ```
 
-### [D] Q8/Q9 - School and Law Degree data availability
+### Q8/Q9 - School and Law Degree data availability
 
 [Visual](https://www.datawrapper.de/_/j0Tsz/)
 
