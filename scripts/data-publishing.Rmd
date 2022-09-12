@@ -79,11 +79,14 @@ readr::write_csv(judge_master,"../data/final-files-nluo/judges_master_updated_co
 ```{r Read files for analysis, include=FALSE}
 
 # This is the path of updated consolidated file (All judges across all high courts)
-data_for_analysis_path <- "../data/shared-by-smita/KHOJ MASTER FINAL.csv"
+data_for_analysis_path <- "../data/final-files-nluo/master_file/v1.n/KHOJ 1.6 (duplicate removed).csv"
 data_for_analysis <-
   readr::read_csv(data_for_analysis_path, col_types = cols(.default = "c"))
 data_for_analysis$`Foreign Degree in Law` <- stringr::str_to_title(data_for_analysis$`Foreign Degree in Law`)
 data_for_analysis$`Post-Graduate in Law` <- stringr::str_to_title(data_for_analysis$`Post-Graduate in Law`)
+data_for_analysis$`Schooling Information` <- stringr::str_to_title(data_for_analysis$`Schooling Information`)
+data_for_analysis$`Law Degree Institution` <- stringr::str_to_title(data_for_analysis$`Law Degree Institution`)
+
 ```
 
 <!-- ### Download Files -->
@@ -119,7 +122,7 @@ DT::datatable(
 ```{r judges-by-cadre, echo=FALSE}
 
 cadre_dist <- data_for_analysis %>% group_by(Cadre) %>% summarise(total=n()) %>% mutate(percent=round(total/sum(total)*100,2))
-cadre_dist$Cadre[is.na(cadre_dist$Cadre)] <- "Not Available"
+# cadre_dist$Cadre[is.na(cadre_dist$Cadre)] <- "Not Available"
 DT::datatable(
   cadre_dist,
   options = list(autoWidth = TRUE)
@@ -234,15 +237,16 @@ DT::datatable(
 
 transferred_any <- data_for_analysis %>% filter(`If transferred to any other High Court` == "Yes")
 transferred_any$total_transfers <-
-  ifelse(!is.na(transferred_any$`If yes, which High Court 3`),
-         3,
-         ifelse(
-           !is.na(transferred_any$`If yes, which High Court 2`),
-           2,
-           ifelse(!is.na(
-             transferred_any$`If yes, which High Court 1`
-           ), 1, 1)
-         ))
+  ifelse(
+    !transferred_any$`If yes, which High Court 3` %in% c("Not Applicable"),
+    3,
+    ifelse(
+      !transferred_any$`If yes, which High Court 2` %in% c("Not Applicable"),
+      2,
+      1
+    )
+  )
+
 times_transfer <-
   transferred_any %>% group_by(total_transfers) %>% summarise(total = n())
 
@@ -290,9 +294,9 @@ DT::datatable(
 
 ```{r school-law-deg-info, echo=FALSE, message=FALSE, warning=FALSE}
 
-school_na <- data_for_analysis %>% filter(is.na(`Schooling Information`)) %>% group_by(fileTitle) %>% summarise(school_info_na=n())
+school_na <- data_for_analysis %>% filter(`Schooling Information`=="Not Available") %>% group_by(fileTitle) %>% summarise(school_info_na=n())
 
-law_deg_na <- data_for_analysis %>% filter(is.na(`Law Degree Institution`)) %>% group_by(fileTitle) %>% summarise(law_degree_info_na=n())
+law_deg_na <- data_for_analysis %>% filter(`Law Degree Institution`=="Not Available") %>% group_by(fileTitle) %>% summarise(law_degree_info_na=n())
 
 total_judges <- data_for_analysis %>% group_by(fileTitle) %>% summarise(totalJudges=n())
 
@@ -321,7 +325,9 @@ DT::datatable(
 [Visual](https://www.datawrapper.de/_/zpAmL/)
 
 ```{r foreign-edu, echo=FALSE, message=FALSE, warning=FALSE}
-fdl <- data_for_analysis %>% group_by(fileTitle, `Foreign Degree in Law`) %>% summarise(total=n()) %>% pivot_wider(names_from = `Foreign Degree in Law`,values_from = total) %>% mutate(yes_percent=round(Yes/(Yes+No)*100,2))
+fdl <- data_for_analysis %>% group_by(fileTitle, `Foreign Degree in Law`) %>% summarise(total=n()) %>% pivot_wider(names_from = `Foreign Degree in Law`,values_from = total) 
+fdl[is.na(fdl)] <- 0
+fdl <- fdl %>% mutate(yes_percent = round(Yes / (Yes + No) * 100, 2))
 fdl$yes_percent[is.na(fdl$yes_percent)] <- 0
 DT::datatable(
   fdl,
@@ -336,8 +342,9 @@ DT::datatable(
 [Visual](https://www.datawrapper.de/_/rvhyT/)
 
 ```{r pg-degree, echo=FALSE, message=FALSE, warning=FALSE}
-pgdl <- data_for_analysis %>% group_by(fileTitle, `Post-Graduate in Law`) %>% summarise(total=n()) %>% pivot_wider(names_from = `Post-Graduate in Law`,values_from = total) %>% mutate(yes_percent=round(Yes/(Yes+No)*100,2))
-
+pgdl <- data_for_analysis %>% group_by(fileTitle, `Post-Graduate in Law`) %>% summarise(total=n()) %>% pivot_wider(names_from = `Post-Graduate in Law`,values_from = total) 
+pgdl[is.na(pgdl)] <- 0
+pgdl <- pgdl %>% mutate(yes_percent = round(Yes / (Yes + No) * 100, 2))
 pgdl$yes_percent[is.na(pgdl$yes_percent)] <- 0
 
 
