@@ -86,6 +86,8 @@ data_for_analysis$`Foreign Degree in Law` <- stringr::str_to_title(data_for_anal
 data_for_analysis$`Post-Graduate in Law` <- stringr::str_to_title(data_for_analysis$`Post-Graduate in Law`)
 data_for_analysis$`Schooling Information` <- stringr::str_to_title(data_for_analysis$`Schooling Information`)
 data_for_analysis$`Law Degree Institution` <- stringr::str_to_title(data_for_analysis$`Law Degree Institution`)
+data_for_analysis$`Litigation Experience` <- stringr::str_to_title(data_for_analysis$`Litigation Experience`)
+data_for_analysis$`Chamber Details` <- stringr::str_to_title(data_for_analysis$`Chamber Details`)
 
 ```
 
@@ -379,4 +381,20 @@ cji_data_for_viz <- data.frame("Cadre"=c("Bar","Service"),"Percent Judges"=c(cj_
 Total CJ's - `r total_cj`
 
 Female CJ's - `r total_female_cj`
+
+### Q13 - Chamber Details
+
+[Visual](https://www.datawrapper.de/_/1NeXB/)
+
+```{r chamber-details, echo=FALSE, message=FALSE, warning=FALSE}
+
+chamber_details <- data_for_analysis %>% group_by(`Litigation Experience`, `Chamber Details`) %>% summarise(totalJudges=n()) 
+chamber_details <- chamber_details[chamber_details$`Litigation Experience` == "Yes",] %>% mutate(percentJudges = round(totalJudges/sum(totalJudges)*100,2))
+
+DT::datatable(
+  chamber_details,
+  options = list(autoWidth = TRUE)
+)
+
+```
 
