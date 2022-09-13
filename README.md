@@ -1,4 +1,4 @@
-# Summer of Data | Chapter 1 | Dataset on Indian High Court Judges
+# Summer of Data | Chapter 1 | KHOJ - Dataset about the Indian High Court judges
 
 ## About the Event
 
