@@ -23,8 +23,9 @@ source("libraries.R")
 
 ```{r read-state-files, include=FALSE}
 
-state_file_dir <- "../data/final-files-nluo/state_files/csv/v2/"
-all_state_files <- dir(state_file_dir)
+state_file_dir <- "../data/final-files/state_files/csv/v3/"
+all_state_files <- dir(state_file_dir) %>% stringr::str_to_lower()
+
 
 state_df <- c()
 for(i in 1:length(all_state_files)){
@@ -36,7 +37,7 @@ for(i in 1:length(all_state_files)){
 }
 
 state_df$Gender <- stringr::str_to_title(state_df$Gender)
-state_df$courtTitle <- stringr::str_replace_all(string = state_df$courtTitle, pattern = "KHOJ_",replacement = "") %>% stringr::str_replace_all(pattern = "\\.csv",replacement = "")
+state_df$courtTitle <- stringr::str_replace_all(string = state_df$courtTitle, pattern = "khoj_",replacement = "") %>% stringr::str_replace_all(pattern = "\\.csv",replacement = "") %>% stringr::str_to_title()
 
 # judge_master <-
 #   readr::read_csv("../data/final-files-nluo/judges_master_file.csv",
@@ -79,7 +80,7 @@ readr::write_csv(judge_master,"../data/final-files-nluo/judges_master_updated_co
 ```{r Read files for analysis, include=FALSE}
 
 # This is the path of updated consolidated file (All judges across all high courts)
-data_for_analysis_path <- "../data/final-files-nluo/master_file/v1.n/KHOJ 1.6 (duplicate removed).csv"
+data_for_analysis_path <- "../data/final-files/master_file/v1.n/KHOJ 1.7.csv"
 data_for_analysis <-
   readr::read_csv(data_for_analysis_path, col_types = cols(.default = "c"))
 data_for_analysis$`Foreign Degree in Law` <- stringr::str_to_title(data_for_analysis$`Foreign Degree in Law`)
