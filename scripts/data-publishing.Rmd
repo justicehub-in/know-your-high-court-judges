@@ -89,7 +89,12 @@ data_for_analysis$`Schooling Information` <- stringr::str_to_title(data_for_anal
 data_for_analysis$`Law Degree Institution` <- stringr::str_to_title(data_for_analysis$`Law Degree Institution`)
 data_for_analysis$`Litigation Experience` <- stringr::str_to_title(data_for_analysis$`Litigation Experience`)
 data_for_analysis$`Chamber Details` <- stringr::str_to_title(data_for_analysis$`Chamber Details`)
-
+data_for_analysis$`Graduation Institution` <- stringr::str_to_title(data_for_analysis$`Graduation Institution`)
+data_for_analysis$`Graduation Specialization` <- stringr::str_to_title(data_for_analysis$`Graduation Specialization`)
+data_for_analysis$`Law Degree Year` <- stringr::str_to_title(data_for_analysis$`Law Degree Year`)
+data_for_analysis$`Bar Enrolment Year` <- stringr::str_to_title(data_for_analysis$`Bar Enrolment Year`)
+data_for_analysis$`Post-Graduate in another subject` <- stringr::str_to_title(data_for_analysis$`Post-Graduate in another subject`)
+data_for_analysis$`State Bar Association where enrolled` <- stringr::str_to_title(data_for_analysis$`State Bar Association where enrolled`)
 ```
 
 <!-- ### Download Files -->
@@ -400,6 +405,30 @@ DT::datatable(
   chamber_details,
   options = list(autoWidth = TRUE)
 )
+
+```
+
+### Q14 - Data Unavailability
+
+[Visual](https://www.datawrapper.de/_/QCYbQ/)
+
+```{r data-unavailability, echo=FALSE, message=FALSE, warning=FALSE}
+total_cols <- ncol(data_for_analysis) - 1
+total_rows <- nrow(data_for_analysis)
+
+na_df <- c()
+for(i in 1:total_cols){
+ col_name <- names(data_for_analysis[,i])
+ total_na <- nrow(data_for_analysis[data_for_analysis[,i] == "Not Available",])
+ percent_na <- round(total_na/total_rows*100,2)
+ na_i_df <- data.frame("col"=col_name, "total_na"=total_na,"percent_na"=percent_na)
+ na_df <- bind_rows(na_df, na_i_df)
+}
+
+DT::datatable(na_df,
+              filter = 'top',
+              options = list(autoWidth = TRUE))
+
 
 ```
 
