@@ -114,8 +114,6 @@ Profile details available for **`r nrow(data_for_analysis)` ** judges across **`
 
 _Total number of judges in each state level file. Here we are only counting the number of rows in each file. _
 
-[Visual](https://www.datawrapper.de/_/3xI7Q/) 
-
 ```{r total-judges-per-court, echo=FALSE}
 
 total_judges_per_court <- state_df %>% group_by(courtTitle) %>% summarise(total=n())
@@ -129,8 +127,6 @@ DT::datatable(
 
 ### Q2 - Distribution of judges by cadre
 
-[Visual](https://www.datawrapper.de/_/szxYA/)
-
 ```{r judges-by-cadre, echo=FALSE}
 
 cadre_dist <- data_for_analysis %>% group_by(Cadre) %>% summarise(total=n()) %>% mutate(percent=round(total/sum(total)*100,2))
@@ -143,7 +139,6 @@ DT::datatable(
 
 ### Q3 - Distribution of judges by cadre in each state
 
-[Visual](https://www.datawrapper.de/_/m1Hkx/)
 
 ```{r state-wise-judges-by-cadre, echo=FALSE, warning=FALSE}
 
@@ -172,7 +167,6 @@ DT::datatable(
 
 ### Q4 - Gender distribution of judges in each state
 
-[Visual](https://www.datawrapper.de/_/YFEO6/)
 
 ```{r gender-distribution, echo=FALSE}
 
@@ -199,8 +193,6 @@ There are `r nrow(service_cadre_with_hc_admin)` judges who have experience worki
 
 _Note: Here we are only counting transfers from Parent High Court_
 
-[Visual](https://www.datawrapper.de/_/NMgJl/)
-
 ```{r judge-transfers, echo=FALSE}
 transfer_from <- data_for_analysis %>% filter(`If transferred to any other High Court` == "Yes") %>% group_by(`Parent High Court`) %>% summarise(total_transfers = n())
 
@@ -214,8 +206,6 @@ DT::datatable(
 ```
 
 ### Q6 - 2 - Transfer to High Court
-
-[Visual](https://www.datawrapper.de/_/qISLd/)
 
 ```{r transfer-to, echo=FALSE}
 
@@ -242,8 +232,6 @@ DT::datatable(
 ```
 
 ### Q6 - 3 - Number of transfers 
-
-[Visual](https://www.datawrapper.de/_/oIhKs/)
 
 ```{r num-judge-transfers, echo=FALSE}
 
@@ -272,8 +260,6 @@ DT::datatable(
 
 ### Q7 - Private empanelment and prior litigation experience
 
-[Visual](https://www.datawrapper.de/_/IUSYP/)
-
 ```{r empanelment-litigation, echo=FALSE, message=FALSE, warning=FALSE}
 state_df$`Litigation Experience` <- stringr::str_to_title(state_df$`Litigation Experience`)
 
@@ -301,8 +287,6 @@ DT::datatable(
 ```
 
 ### Q8/Q9 - School and Law Degree data availability
-
-[Visual](https://www.datawrapper.de/_/j0Tsz/)
 
 ```{r school-law-deg-info, echo=FALSE, message=FALSE, warning=FALSE}
 
@@ -334,8 +318,6 @@ DT::datatable(
 
 ### Q10 - Foreign Education Degree
 
-[Visual](https://www.datawrapper.de/_/zpAmL/)
-
 ```{r foreign-edu, echo=FALSE, message=FALSE, warning=FALSE}
 fdl <- data_for_analysis %>% group_by(fileTitle, `Foreign Degree in Law`) %>% summarise(total=n()) %>% pivot_wider(names_from = `Foreign Degree in Law`,values_from = total) 
 fdl[is.na(fdl)] <- 0
@@ -350,8 +332,6 @@ DT::datatable(
 ```
 
 ### Q11 - PG Degree
-
-[Visual](https://www.datawrapper.de/_/rvhyT/)
 
 ```{r pg-degree, echo=FALSE, message=FALSE, warning=FALSE}
 pgdl <- data_for_analysis %>% group_by(fileTitle, `Post-Graduate in Law`) %>% summarise(total=n()) %>% pivot_wider(names_from = `Post-Graduate in Law`,values_from = total) 
@@ -369,9 +349,6 @@ DT::datatable(
 ```
 
 ### Q12 - Chief Justices Cadre
-
-[Visual](https://www.datawrapper.de/_/5Sjhd/)
-
 
 ```{r chief-justices, echo=FALSE, message=FALSE, warning=FALSE}
 total_cj <- data_for_analysis %>% filter(`If appointed Chief Justice in another High Court` == "Yes") %>% nrow
@@ -394,8 +371,6 @@ Female CJ's - `r total_female_cj`
 
 ### Q13 - Chamber Details
 
-[Visual](https://www.datawrapper.de/_/1NeXB/)
-
 ```{r chamber-details, echo=FALSE, message=FALSE, warning=FALSE}
 
 chamber_details <- data_for_analysis %>% group_by(`Litigation Experience`, `Chamber Details`) %>% summarise(totalJudges=n()) 
@@ -409,8 +384,6 @@ DT::datatable(
 ```
 
 ### Q14 - Data Unavailability
-
-[Visual](https://www.datawrapper.de/_/QCYbQ/)
 
 ```{r data-unavailability, echo=FALSE, message=FALSE, warning=FALSE}
 total_cols <- ncol(data_for_analysis) - 1
@@ -432,4 +405,21 @@ DT::datatable(na_df,
 
 
 ```
+
+<!-- ### Data Visualisations  -->
+
+<!-- [Visual for Q1](https://www.datawrapper.de/_/3xI7Q/)  -->
+<!-- [Visual for Q2](https://www.datawrapper.de/_/szxYA/) -->
+<!-- [Visual for Q3](https://www.datawrapper.de/_/m1Hkx/) -->
+<!-- [Visual for Q4](https://www.datawrapper.de/_/YFEO6/) -->
+<!-- [Visual for Q6 - 1](https://www.datawrapper.de/_/NMgJl/) -->
+<!-- [Visual for Q6 - 2](https://www.datawrapper.de/_/qISLd/) -->
+<!-- [Visual for Q6 - 3](https://www.datawrapper.de/_/oIhKs/) -->
+<!-- [Visual for Q7](https://www.datawrapper.de/_/IUSYP/) -->
+<!-- [Visual for Q8/Q9](https://www.datawrapper.de/_/j0Tsz/) -->
+<!-- [Visual for Q10](https://www.datawrapper.de/_/zpAmL/) -->
+<!-- [Visual for Q11](https://www.datawrapper.de/_/rvhyT/) -->
+<!-- [Visual for Q12](https://www.datawrapper.de/_/5Sjhd/) -->
+<!-- [Visual for Q13](https://www.datawrapper.de/_/1NeXB/) -->
+<!-- [Visual for Q14](https://www.datawrapper.de/_/QCYbQ/) -->
 
