@@ -351,11 +351,11 @@ DT::datatable(
 ### Q12 - Chief Justices Cadre
 
 ```{r chief-justices, echo=FALSE, message=FALSE, warning=FALSE}
-total_cj <- data_for_analysis %>% filter(`If appointed Chief Justice in another High Court` == "Yes") %>% nrow
+total_cj <- data_for_analysis %>% filter(`If appointed Chief Justice in any High Court` == "Yes") %>% nrow
 
-total_female_cj <- data_for_analysis %>% filter(`If appointed Chief Justice in another High Court` == "Yes" & Gender == "Female") %>% nrow
+total_female_cj <- data_for_analysis %>% filter(`If appointed Chief Justice in any High Court` == "Yes" & Gender == "Female") %>% nrow
 
-cj_cadre <- data_for_analysis %>% filter(`If appointed Chief Justice in another High Court` == "Yes") %>% group_by(Cadre) %>% summarise(total=n()) %>% pivot_wider(names_from=Cadre, values_from=total) %>% mutate(bar_percent=round(Bar/(Bar+Service)*100,2), service_percent=round(Service/(Bar+Service)*100,2))
+cj_cadre <- data_for_analysis %>% filter(`If appointed Chief Justice in any High Court` == "Yes") %>% group_by(Cadre) %>% summarise(total=n()) %>% pivot_wider(names_from=Cadre, values_from=total) %>% mutate(bar_percent=round(Bar/(Bar+Service)*100,2), service_percent=round(Service/(Bar+Service)*100,2))
 
 DT::datatable(
   cj_cadre,
