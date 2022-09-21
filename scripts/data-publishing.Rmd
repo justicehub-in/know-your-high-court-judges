@@ -23,7 +23,7 @@ source("libraries.R")
 
 ```{r read-state-files, include=FALSE}
 
-state_file_dir <- "../data/final-files/state_files/csv/v3/"
+state_file_dir <- "../data/final-files/state_files/csv/v4/"
 all_state_files <- dir(state_file_dir) %>% stringr::str_to_lower()
 
 
@@ -80,7 +80,7 @@ readr::write_csv(judge_master,"../data/final-files-nluo/judges_master_updated_co
 ```{r Read files for analysis, include=FALSE}
 
 # This is the path of updated consolidated file (All judges across all high courts)
-data_for_analysis_path <- "../data/final-files/master_file/v1.n/KHOJ 1.7.csv"
+data_for_analysis_path <- "../data/final-files/master_file/v1.n/KHOJ 1.8.csv"
 data_for_analysis <-
   readr::read_csv(data_for_analysis_path, col_types = cols(.default = "c"))
 data_for_analysis$`Foreign Degree in Law` <- stringr::str_to_title(data_for_analysis$`Foreign Degree in Law`)
