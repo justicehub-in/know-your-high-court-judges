@@ -420,8 +420,9 @@ na_df <- c()
 for(i in 1:total_cols){
  col_name <- names(data_for_analysis[,i])
  total_na <- nrow(data_for_analysis[data_for_analysis[,i] == "Not Available",])
- percent_na <- round(total_na/total_rows*100,2)
- na_i_df <- data.frame("col"=col_name, "total_na"=total_na,"percent_na"=percent_na)
+ total_not_applicable <- nrow(data_for_analysis[data_for_analysis[,i] == "Not Applicable",]) 
+ percent_na <- round(total_na/(total_rows-total_not_applicable)*100,2)
+ na_i_df <- data.frame("col"=col_name, "total_na"=total_na,"total_not_app" = total_not_applicable,"percent_na"=percent_na)
  na_df <- bind_rows(na_df, na_i_df)
 }
 
