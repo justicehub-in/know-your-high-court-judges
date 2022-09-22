@@ -406,20 +406,20 @@ DT::datatable(na_df,
 
 ```
 
-<!-- ### Data Visualisations  -->
+### Data Visualisations
 
-<!-- [Visual for Q1](https://www.datawrapper.de/_/3xI7Q/)  -->
-<!-- [Visual for Q2](https://www.datawrapper.de/_/szxYA/) -->
-<!-- [Visual for Q3](https://www.datawrapper.de/_/m1Hkx/) -->
-<!-- [Visual for Q4](https://www.datawrapper.de/_/YFEO6/) -->
-<!-- [Visual for Q6 - 1](https://www.datawrapper.de/_/NMgJl/) -->
-<!-- [Visual for Q6 - 2](https://www.datawrapper.de/_/qISLd/) -->
-<!-- [Visual for Q6 - 3](https://www.datawrapper.de/_/oIhKs/) -->
-<!-- [Visual for Q7](https://www.datawrapper.de/_/IUSYP/) -->
-<!-- [Visual for Q8/Q9](https://www.datawrapper.de/_/j0Tsz/) -->
-<!-- [Visual for Q10](https://www.datawrapper.de/_/zpAmL/) -->
-<!-- [Visual for Q11](https://www.datawrapper.de/_/rvhyT/) -->
-<!-- [Visual for Q12](https://www.datawrapper.de/_/5Sjhd/) -->
-<!-- [Visual for Q13](https://www.datawrapper.de/_/1NeXB/) -->
-<!-- [Visual for Q14](https://www.datawrapper.de/_/QCYbQ/) -->
+1. [Visual for Q1](https://www.datawrapper.de/_/3xI7Q/)
+2. [Visual for Q2](https://www.datawrapper.de/_/szxYA/)
+3. [Visual for Q3](https://www.datawrapper.de/_/m1Hkx/)
+4. [Visual for Q4](https://www.datawrapper.de/_/YFEO6/)
+5. [Visual for Q6 - 1](https://www.datawrapper.de/_/NMgJl/)
+6. [Visual for Q6 - 2](https://www.datawrapper.de/_/qISLd/)
+7. [Visual for Q6 - 3](https://www.datawrapper.de/_/oIhKs/)
+8. [Visual for Q7](https://www.datawrapper.de/_/IUSYP/)
+9. [Visual for Q8/Q9](https://www.datawrapper.de/_/j0Tsz/)
+10. [Visual for Q10](https://www.datawrapper.de/_/zpAmL/)
+11. [Visual for Q11](https://www.datawrapper.de/_/rvhyT/)
+12. [Visual for Q12](https://www.datawrapper.de/_/5Sjhd/)
+13. [Visual for Q13](https://www.datawrapper.de/_/1NeXB/)
+14. [Visual for Q14](https://www.datawrapper.de/_/QCYbQ/)
 
